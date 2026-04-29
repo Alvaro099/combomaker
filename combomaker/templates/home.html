@@ -1,28 +1,37 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Combo Maker</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet" />
   <style>
     :root {
-      --bg: #0e0e10;
-      --surface: #18181c;
-      --surface2: #222228;
-      --border: #2e2e38;
-      --accent: #7c5cfc;
-      --accent-dim: #4a3894;
-      --accent-glow: rgba(124, 92, 252, 0.25);
-      --text: #e8e8f0;
-      --text-muted: #888899;
-      --danger: #fc5c7d;
+      --bg: #0F1117;
+      --surface: #161B2E;
+      --surface2: #1A2035;
+      --border: #2A2F45;
+      --accent: #3B82F6;
+      --accent-dim: #2563EB;
+      --accent-glow: rgba(59, 130, 246, 0.12);
+      --text: #E2E8F8;
+      --text-muted: #8B95B0;
+      --danger: #F87171;
       --mono: 'IBM Plex Mono', monospace;
-      --sans: 'IBM Plex Sans', sans-serif;
-      --display: 'Bebas Neue', cursive;
+      --sans: 'Inter', 'IBM Plex Sans', sans-serif;
+      --display: 'Inter', sans-serif;
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
       background: var(--bg);
@@ -31,22 +40,6 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-    }
-
-    /* ── Scanline overlay ── */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background: repeating-linear-gradient(
-        to bottom,
-        transparent 0px,
-        transparent 3px,
-        rgba(0,0,0,0.08) 3px,
-        rgba(0,0,0,0.08) 4px
-      );
-      pointer-events: none;
-      z-index: 9999;
     }
 
     /* ── Header ── */
@@ -89,55 +82,36 @@
       align-items: start;
     }
 
-    /* ── Sidebar controls ── */
-    .controls {
+    /* Game Navigation */
+    .game-nav {
       display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .controls-title {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      margin-bottom: 0.25rem;
-    }
-
-    /* Export buttons */
-    .export-group {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 1rem 1.2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .btn-export {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-      font-family: var(--mono);
-      font-size: 0.8rem;
-      padding: 0.7rem 1rem;
-      border-radius: 4px;
-      cursor: pointer;
-      text-align: left;
-      letter-spacing: 0.05em;
-      transition: all 0.15s;
-      display: flex;
+      gap: 0.8rem;
       align-items: center;
-      gap: 0.5rem;
-      width: 100%;
     }
 
-    .btn-export:hover {
+    .game-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      font-family: var(--sans);
+      font-size: 1.05rem;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      letter-spacing: 0.02em;
+    }
+
+    .game-btn:hover {
       background: var(--surface2);
-      border-color: var(--accent-dim);
       color: var(--text);
+    }
+
+    .game-btn.active-game {
+      background: var(--accent-glow);
+      color: var(--accent);
+      border-color: var(--accent);
     }
 
     /* ── Editor area ── */
@@ -167,8 +141,15 @@
     }
 
     @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.3;
+      }
     }
 
     .editor-label {
@@ -179,10 +160,10 @@
       text-transform: uppercase;
     }
 
-    textarea#combo-input {
+    div#combo-input {
       width: 100%;
       height: 100%;
-      background: var(--surface);
+      min-height: 100px;
       border: 1px solid var(--border);
       border-radius: 4px;
       color: var(--text);
@@ -190,44 +171,23 @@
       font-size: 1rem;
       line-height: 1.6;
       padding: 1.2rem;
-      resize: none;
       outline: none;
       transition: border-color 0.2s, box-shadow 0.2s;
       caret-color: var(--accent);
+      display: flex;
+      flex-wrap: wrap;
+      align-content: flex-start;
+      gap: 8px;
+      align-items: center;
+      overflow-y: auto;
     }
 
-    textarea#combo-input::placeholder {
-      color: var(--text-muted);
-      opacity: 0.5;
-    }
-
-    textarea#combo-input:focus {
+    div#combo-input:focus {
       border-color: var(--accent-dim);
       box-shadow: 0 0 0 3px var(--accent-glow);
     }
 
-    /* Preview strip */
-    .preview-strip {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 0.9rem 1.2rem;
-      font-family: var(--mono);
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      min-height: 48px;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-    }
 
-    .preview-strip .token {
-      color: var(--accent);
-      background: rgba(124,92,252,0.12);
-      padding: 0.1rem 0.4rem;
-      border-radius: 2px;
-    }
 
     /* ── Footer ── */
     footer {
@@ -242,13 +202,20 @@
 
     /* ── Fade-in animation ── */
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    .hero    { animation: fadeUp 0.5s ease both; }
-    .controls{ animation: fadeUp 0.5s 0.1s ease both; }
-    .editor-wrap { animation: fadeUp 0.5s 0.18s ease both; }
+    .editor-wrap {
+      animation: fadeUp 0.5s 0.18s ease both;
+    }
 
     /* ══════════ TECLADOS POR JUEGO ══════════ */
     #game-keyboards {
@@ -268,12 +235,10 @@
     }
 
     .kbd-game-section {
-        
-      background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 2rem;
-      box-shadow: 0 0 30px rgba(0,0,0,0.3), 0 0 0 1px var(--accent-dim);
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.3), 0 0 0 1px var(--accent-dim);
     }
 
     /* Header */
@@ -384,7 +349,7 @@
     .dir-key:hover {
       border-color: var(--accent-dim);
       color: var(--text);
-      background: rgba(124,92,252,0.1);
+      background: rgba(124, 92, 252, 0.1);
     }
 
     .dir-key.active {
@@ -419,7 +384,7 @@
       border-color: #7777cc;
       border-bottom-color: #222266;
       color: #fff;
-      box-shadow: 0 0 12px rgba(100,100,220,0.4);
+      box-shadow: 0 0 12px rgba(100, 100, 220, 0.4);
     }
 
     /* Kick keys */
@@ -441,7 +406,7 @@
       border-color: #77cc77;
       border-bottom-color: #226622;
       color: #fff;
-      box-shadow: 0 0 12px rgba(100,220,100,0.4);
+      box-shadow: 0 0 12px rgba(100, 220, 100, 0.4);
     }
 
     /* Special keys */
@@ -464,7 +429,7 @@
       border-color: #cc9966;
       border-bottom-color: #663311;
       color: #fff;
-      box-shadow: 0 0 12px rgba(200,150,80,0.4);
+      box-shadow: 0 0 12px rgba(200, 150, 80, 0.4);
     }
 
     /* Footer del teclado */
@@ -511,185 +476,233 @@
       gap: 4px;
     }
 
-    .kbd-preview-empty { color: var(--text-muted); opacity: 0.4; font-size: 0.75rem; }
+    .kbd-preview-empty {
+      color: var(--text-muted);
+      opacity: 0.4;
+      font-size: 0.75rem;
+    }
 
     .kbd-token {
       color: var(--accent);
-      background: rgba(124,92,252,0.15);
+      background: rgba(124, 92, 252, 0.15);
       padding: 0.1rem 0.4rem;
       border-radius: 2px;
     }
 
     /* ── Responsive ── */
     @media (max-width: 700px) {
-      main { grid-template-columns: 1fr; padding: 1.5rem 1rem; }
-      header { padding: 1rem 1.2rem; }
-      footer { padding: 1rem 1.2rem; }
+      main {
+        grid-template-columns: 1fr;
+        padding: 1.5rem 1rem;
+      }
+
+      header {
+        padding: 1rem 1.2rem;
+      }
+
+      footer {
+        padding: 1rem 1.2rem;
+      }
     }
   </style>
 </head>
+
 <body>
   <header>
     <div class="logo">COMBO<span>MAKER</span></div>
-    <button class="btn-export" data-game="twoexko" onclick="showGameKeyboard('twoexko')">2XKO</button>
-    <button class="btn-export" data-game="generic" onclick="showGameKeyboard('generic')">Generic</button>
-    <button class="btn-export" data-game="tekken" onclick="showGameKeyboard('tekken')">TEKKEN 8</button>
-    <button class="btn-export" data-game="sf6" onclick="showGameKeyboard('sf6')">SF6</button>
+    <nav class="game-nav">
+      <button class="game-btn" data-game="twoexko" onclick="showGameKeyboard('twoexko')">2XKO</button>
+      <button class="game-btn" data-game="generic" onclick="showGameKeyboard('generic')">Generic</button>
+      <button class="game-btn" data-game="tekken" onclick="showGameKeyboard('tekken')">TEKKEN 8</button>
+      <button class="game-btn" data-game="sf6" onclick="showGameKeyboard('sf6')">SF6</button>
+    </nav>
   </header>
   <main>
     <!-- Editor -->
     <div class="editor-wrap">
-      <div class="editor-header">
-        <div class="editor-dot"></div>
-        <span class="editor-label">Preview de tu combo</span>
+      <div class="editor-header" style="justify-content: space-between; width: 100%;">
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <div class="editor-dot"></div>
+          <span class="editor-label">Preview de tu combo</span>
+        </div>
       </div>
 
-      <textarea
-        id="combo-input"
-        spellcheck="false"
-        autocomplete="off"
-        readonly
-      ></textarea>
+      <div id="combo-input" tabindex="0"><span
+          style="color:var(--text-muted); opacity:0.5; font-family:var(--mono);">Aquí aparecerá tu combo...</span>
+      </div>
     </div>
 
     <section id="game-keyboards">
 
-    <!-- TECLADO SF6 -->
-    <div class="kbd-game-section" id="kbd-sf6" style="display:none;">
-      <div class="kbd-header">
-        <div class="kbd-title-row">
-          <span class="kbd-game-badge">SF6</span>
-          <h2 class="kbd-title">TECLADO PARA STREET FIGHTER 6</h2>
+      <!-- TECLADO SF6 -->
+      <div class="kbd-game-section" id="kbd-sf6" style="display:none;">
+        <div class="kbd-header">
+          <div class="kbd-title-row">
+            <span class="kbd-game-badge">SF6</span>
+            <h2 class="kbd-title">TECLADO PARA STREET FIGHTER 6</h2>
+          </div>
+        </div>
+        <div class="kbd-layout" style="margin-top:1.5rem;">
+          <div class="kbd-block">
+            <p class="kbd-block-label">MOVIMIENTO</p>
+            <div class="kbd-grid dir-grid" id="dir-grid-sf6"></div>
+          </div>
+          <div class="kbd-sep"></div>
+          <div class="kbd-block">
+            <p class="kbd-block-label">BOTONES</p>
+            <div class="kbd-grid btn-grid" id="btn-grid-sf6"></div>
+          </div>
+        </div>
+        <div class="kbd-footer" style="margin-top:1rem;">
+          <button class="kbd-action-btn secondary" onclick="clearLast()">⌫ Borrar último</button>
+          <button class="kbd-action-btn secondary" onclick="clearAll()">⌧ Limpiar</button>
+          <button class="kbd-action-btn secondary" onclick="exportCombo()"
+            style="border-color: var(--accent); color: var(--accent); padding: 0.4rem 0.8rem; font-size: 0.7rem;">
+            ⭳ Exportar PNG
+          </button>
         </div>
       </div>
-      <div class="kbd-layout" style="margin-top:1.5rem;">
-        <div class="kbd-block">
-          <p class="kbd-block-label">MOVIMIENTO</p>
-          <div class="kbd-grid dir-grid" id="dir-grid-sf6"></div>
-        </div>
-        <div class="kbd-sep"></div>
-        <div class="kbd-block">
-          <p class="kbd-block-label">BOTONES</p>
-          <div class="kbd-grid btn-grid" id="btn-grid-sf6"></div>
-        </div>
-      </div>
-      <div class="kbd-footer" style="margin-top:1rem;">
-        <button class="kbd-action-btn secondary" onclick="clearLast()">⌫ Borrar último</button>
-        <button class="kbd-action-btn secondary" onclick="clearAll()">⌧ Limpiar</button>
-      </div>
-    </div>
 
-    <!-- TECLADO TEKKEN 8 -->
-    <div class="kbd-game-section" id="kbd-tekken" style="display:none;">
-      <div class="kbd-header">
-        <div class="kbd-title-row">
-          <span class="kbd-game-badge">T8</span>
-          <h2 class="kbd-title">TECLADO PARA TEKKEN 8</h2>
+      <!-- TECLADO TEKKEN 8 -->
+      <div class="kbd-game-section" id="kbd-tekken" style="display:none;">
+        <div class="kbd-header">
+          <div class="kbd-title-row">
+            <span class="kbd-game-badge">T8</span>
+            <h2 class="kbd-title">TECLADO PARA TEKKEN 8</h2>
+          </div>
+        </div>
+        <div class="kbd-layout" style="margin-top:1.5rem;">
+          <div class="kbd-block">
+            <p class="kbd-block-label">MOVIMIENTO</p>
+            <div class="kbd-grid dir-grid" id="dir-grid-tekken"></div>
+          </div>
+          <div class="kbd-sep"></div>
+          <div class="kbd-block">
+            <p class="kbd-block-label">BOTONES</p>
+            <div class="kbd-grid btn-grid" id="btn-grid-tekken"></div>
+          </div>
+        </div>
+        <div class="kbd-footer" style="margin-top:1rem;">
+          <button class="kbd-action-btn secondary" onclick="clearLast()">⌫ Borrar último</button>
+          <button class="kbd-action-btn secondary" onclick="clearAll()">⌧ Limpiar</button>
+          <button class="kbd-action-btn secondary" onclick="exportCombo()"
+            style="border-color: var(--accent); color: var(--accent); padding: 0.4rem 0.8rem; font-size: 0.7rem;">
+            ⭳ Exportar PNG
+          </button>
         </div>
       </div>
-      <div class="kbd-layout" style="margin-top:1.5rem;">
-        <div class="kbd-block">
-          <p class="kbd-block-label">MOVIMIENTO</p>
-          <div class="kbd-grid dir-grid" id="dir-grid-tekken"></div>
-        </div>
-        <div class="kbd-sep"></div>
-        <div class="kbd-block">
-          <p class="kbd-block-label">BOTONES</p>
-          <div class="kbd-grid btn-grid" id="btn-grid-tekken"></div>
-        </div>
-      </div>
-      <div class="kbd-footer" style="margin-top:1rem;">
-        <button class="kbd-action-btn secondary" onclick="clearLast()">⌫ Borrar último</button>
-        <button class="kbd-action-btn secondary" onclick="clearAll()">⌧ Limpiar</button>
-      </div>
-    </div>
 
-    <!-- TECLADO GENERIC -->
-    <div class="kbd-game-section" id="kbd-generic" style="display:none;">
-      <div class="kbd-header">
-        <div class="kbd-title-row">
-          <span class="kbd-game-badge">N</span>
-          <h2 class="kbd-title">TECLADO GENERICO</h2>
+      <!-- TECLADO GENERIC -->
+      <div class="kbd-game-section" id="kbd-generic" style="display:none;">
+        <div class="kbd-header">
+          <div class="kbd-title-row">
+            <span class="kbd-game-badge">N</span>
+            <h2 class="kbd-title">TECLADO GENERICO</h2>
+          </div>
+        </div>
+        <div class="kbd-layout" style="margin-top:1.5rem;">
+          <div class="kbd-block">
+            <p class="kbd-block-label">MOVIMIENTO</p>
+            <div class="kbd-grid dir-grid" id="dir-grid-generic"></div>
+          </div>
+          <div class="kbd-sep"></div>
+          <div class="kbd-block">
+            <p class="kbd-block-label">BOTONES</p>
+            <div class="kbd-grid btn-grid" id="btn-grid-generic"></div>
+          </div>
+        </div>
+        <div class="kbd-footer" style="margin-top:1rem;">
+          <button class="kbd-action-btn secondary" onclick="clearLast()">⌫ Borrar último</button>
+          <button class="kbd-action-btn secondary" onclick="clearAll()">⌧ Limpiar</button>
+          <button class="kbd-action-btn secondary" onclick="exportCombo()"
+            style="border-color: var(--accent); color: var(--accent); padding: 0.4rem 0.8rem; font-size: 0.7rem;">
+            ⭳ Exportar PNG
+          </button>
         </div>
       </div>
-      <div class="kbd-layout" style="margin-top:1.5rem;">
-        <div class="kbd-block">
-          <p class="kbd-block-label">MOVIMIENTO</p>
-          <div class="kbd-grid dir-grid" id="dir-grid-generic"></div>
-        </div>
-        <div class="kbd-sep"></div>
-        <div class="kbd-block">
-          <p class="kbd-block-label">BOTONES</p>
-          <div class="kbd-grid btn-grid" id="btn-grid-generic"></div>
-        </div>
-      </div>
-      <div class="kbd-footer" style="margin-top:1rem;">
-        <button class="kbd-action-btn secondary" onclick="clearLast()">⌫ Borrar último</button>
-        <button class="kbd-action-btn secondary" onclick="clearAll()">⌧ Limpiar</button>
-      </div>
-    </div>
 
-    <!-- TECLADO 2XKO -->
-    <div class="kbd-game-section" id="kbd-twoexko" style="display:none;">
-      <div class="kbd-header">
-        <div class="kbd-title-row">
-          <span class="kbd-game-badge">2XKO</span>
-          <h2 class="kbd-title">TECLADO PARA 2XKO</h2>
+      <!-- TECLADO 2XKO -->
+      <div class="kbd-game-section" id="kbd-twoexko" style="display:none;">
+        <div class="kbd-header">
+          <div class="kbd-title-row">
+            <span class="kbd-game-badge">2XKO</span>
+            <h2 class="kbd-title">TECLADO PARA 2XKO</h2>
+          </div>
+        </div>
+        <div class="kbd-layout" style="margin-top:1.5rem;">
+          <div class="kbd-block">
+            <p class="kbd-block-label">MOVIMIENTO</p>
+            <div class="kbd-grid dir-grid" id="dir-grid-twoexko"></div>
+          </div>
+          <div class="kbd-sep"></div>
+          <div class="kbd-block">
+            <p class="kbd-block-label">BOTONES</p>
+            <div class="kbd-grid btn-grid" id="btn-grid-twoexko"></div>
+          </div>
+        </div>
+        <div class="kbd-footer" style="margin-top:1rem;">
+          <button class="kbd-action-btn secondary" onclick="clearLast()">⌫ Borrar último</button>
+          <button class="kbd-action-btn secondary" onclick="clearAll()">⌧ Limpiar</button>
+          <button class="kbd-action-btn secondary" onclick="exportCombo()"
+            style="border-color: var(--accent); color: var(--accent); padding: 0.4rem 0.8rem; font-size: 0.7rem;">
+            ⭳ Exportar PNG
+          </button>
         </div>
       </div>
-      <div class="kbd-layout" style="margin-top:1.5rem;">
-        <div class="kbd-block">
-          <p class="kbd-block-label">MOVIMIENTO</p>
-          <div class="kbd-grid dir-grid" id="dir-grid-twoexko"></div>
-        </div>
-        <div class="kbd-sep"></div>
-        <div class="kbd-block">
-          <p class="kbd-block-label">BOTONES</p>
-          <div class="kbd-grid btn-grid" id="btn-grid-twoexko"></div>
-        </div>
-      </div>
-      <div class="kbd-footer" style="margin-top:1rem;">
-        <button class="kbd-action-btn secondary" onclick="clearLast()">⌫ Borrar último</button>
-        <button class="kbd-action-btn secondary" onclick="clearAll()">⌧ Limpiar</button>
-      </div>
-    </div>
 
-  </section>
+    </section>
   </main>
 
 
   <footer>COMBO MAKER - Hecho con Flask - Alvaro Bustos</footer>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script>
     // ── Token preview del editor principal ──
-    const input   = document.getElementById('combo-input');
-    const preview = document.getElementById('preview');
+    const inputContainer = document.getElementById('combo-input');
 
-    // No input event since textarea is readonly
-    // input.addEventListener('input', updateMainPreview);
+    // Lista global de imágenes y textos presionados
+    let mainComboTokens = [];
 
     function updateMainPreview() {
-      const raw = input.value.trim();
-      if (!raw) {
-        preview.innerHTML = '<span style="opacity:0.4">preview del combo...</span>';
+      inputContainer.innerHTML = '';
+      if (!mainComboTokens.length) {
+        inputContainer.innerHTML = '<span style="color:var(--text-muted); opacity:0.5; font-family:var(--mono);">Aquí aparecerá tu combo...</span>';
         return;
       }
-      const tokens = raw.split(/[\s,]+/).filter(Boolean);
-      preview.innerHTML = tokens.map(t => `<span class="token">${escHtml(t)}</span>`).join(' ');
-    }
 
-    function escHtml(s) {
-      return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      mainComboTokens.forEach(t => {
+        if (t.img) {
+          const img = document.createElement('img');
+          img.src = t.img;
+          img.alt = t.val;
+          img.title = t.val;
+          img.style.maxWidth = '40px';
+          img.style.maxHeight = '40px';
+          img.style.objectFit = 'contain';
+          inputContainer.appendChild(img);
+        } else {
+          const span = document.createElement('span');
+          span.className = 'kbd-token';
+          span.textContent = t.val;
+          inputContainer.appendChild(span);
+        }
+      });
     }
 
     // ── Game keyboard sections ──
-    let kbdTokens  = [];
+    let kbdTokens = [];
     let currentGame = null;
 
     function showGameKeyboard(game) {
       // Hide all keyboard sections
       document.querySelectorAll('.kbd-game-section').forEach(el => el.style.display = 'none');
       document.getElementById('game-keyboards').style.display = 'block';
+
+      // Remove active class from all buttons
+      document.querySelectorAll('.game-btn').forEach(btn => btn.classList.remove('active-game'));
+      const activeBtn = document.querySelector(`.game-btn[data-game="${game}"]`);
+      if (activeBtn) activeBtn.classList.add('active-game');
 
       // Show selected game
       const section = document.getElementById(`kbd-${game}`);
@@ -700,141 +713,165 @@
         renderKeyboard(game);
         // Clear tokens when switching games
         kbdTokens = [];
-        renderKbdPreview();
+        // renderKbdPreview();
       }
     }
 
-    // Delegación de eventos para teclas del teclado (incluye dinámicas)
+    // Delegación de eventos para teclas del teclado
     document.addEventListener('click', (e) => {
       const btn = e.target.closest('.kbd-key');
       if (btn && currentGame) {
         const val = btn.dataset.val;
-        kbdTokens.push(val);
+        const img = btn.dataset.img || null;
+
+        // Agregar al combo principal directamente
+        mainComboTokens.push({ val: val, img: img });
+        updateMainPreview();
+
         btn.classList.add('active');
         setTimeout(() => btn.classList.remove('active'), 160);
-        renderKbdPreview();
       }
     });
 
-    function renderKbdPreview() {
-      if (!currentGame) return;
-      const p = document.getElementById(`kbd-preview-${currentGame}`);
-      if (!p) return;
-      if (!kbdTokens.length) {
-        p.innerHTML = '<span class="kbd-preview-empty">Sin entrada…</span>';
-        return;
-      }
-      p.innerHTML = kbdTokens.map(t => `<span class="kbd-token">${escHtml(t)}</span>`).join(' ');
-    }
-
     function clearLast() {
-      kbdTokens.pop();
-      renderKbdPreview();
+      mainComboTokens.pop();
+      updateMainPreview();
     }
 
     function clearAll() {
-      kbdTokens = [];
-      renderKbdPreview();
+      mainComboTokens = [];
+      updateMainPreview();
     }
 
-    function insertCombo() {
-      if (!kbdTokens.length || !currentGame) return;
-      const text = kbdTokens.join(' ');
-      const ta = document.getElementById('combo-input');
-      ta.value += (ta.value && !ta.value.endsWith(' ') ? ' ' : '') + text + ' ';
-      kbdTokens = [];
-      renderKbdPreview();
-      updateMainPreview();
-      ta.focus();
+    function exportCombo() {
+      const container = document.getElementById('combo-input');
+
+      // Guardar estilos actuales para restaurar después
+      const originalBorder = container.style.border;
+      const originalWidth = container.style.width;
+      const originalPadding = container.style.padding;
+
+      // Quitar bordes y forzar que el contenedor ajuste solo al contenido
+      container.style.border = 'none';
+      container.style.width = 'max-content';
+      container.style.padding = '0.5rem';
+
+      // html2canvas toma captura del div limpio
+      html2canvas(container, {
+        backgroundColor: "#00000000", // color de fondo
+        scale: 2, // mayor calidad en la imagen exportada
+        useCORS: true // soluciona si de casualidad hay problemas de origen
+      }).then(canvas => {
+        // Restaurar estado visual original inmediatamente
+        container.style.border = originalBorder;
+        container.style.width = originalWidth;
+        container.style.padding = originalPadding;
+
+        const link = document.createElement('a');
+        link.download = 'combo.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      }).catch(err => {
+        // Restaurar estilos también en caso de error
+        container.style.border = originalBorder;
+        container.style.width = originalWidth;
+        container.style.padding = originalPadding;
+
+        console.error('Error exportando combo:', err);
+        alert('Hubo un error exportando la imagen.');
+      });
+    }
+
+    function cleanupPath(path) {
+      if (!path) return '';
+      // Normalizar barras invertidas
+      path = path.replace(/\\/g, '/');
+      // Quitar el prefijo combomaker/ para armar la ruta estática final a /static/
+      if (path.startsWith('combomaker/')) {
+        path = path.replace('combomaker/', '/');
+      } else if (!path.startsWith('/')) {
+        path = '/' + path;
+      }
+      return path;
+    }
+
+    function createButtonsFromDict(dictData, className) {
+      const buttons = [];
+      for (const [key, val] of Object.entries(dictData)) {
+        buttons.push({
+          cls: className,
+          val: key,
+          title: key,
+          text: key,
+          img: cleanupPath(val)
+        });
+      }
+      return buttons;
     }
 
     // Configuración de layouts por juego
     const gameLayouts = {
       sf6: {
         directions: [
-          { cls: 'dir-key', val: '7', title: '↖', text: '↖' },
-          { cls: 'dir-key', val: '8', title: '↑', text: '↑' },
-          { cls: 'dir-key', val: '9', title: '↗', text: '↗' },
-          { cls: 'dir-key', val: '4', title: '←', text: '←' },
-          { cls: 'dir-key center-key', val: 'N', title: '·', text: 'N' },
-          { cls: 'dir-key', val: '6', title: '→', text: '→' },
-          { cls: 'dir-key', val: '1', title: '↙', text: '↙' },
-          { cls: 'dir-key', val: '2', title: '↓', text: '↓' },
-          { cls: 'dir-key', val: '3', title: '↘', text: '↘' },
-          { cls: 'dir-key', val: 'cr', title: 'Crouch', text: 'cr' },
-          { cls: 'dir-key', val: 'j', title: 'Jump', text: 'j' },
+          ...createButtonsFromDict({{ list_movement_sf6 | default({ }) | tojson | safe
+    }}, 'dir-key'),
+    { cls: 'dir-key ', val: ',', title: ',', text: ',' },
+    { cls: 'dir-key ', val: 'j.', title: 'j.', text: 'j.' }
         ],
-        buttons: [
-          { cls: 'punch-key', val: 'LP', title: 'Light Punch', text: 'LP' },
-          { cls: 'punch-key', val: 'MP', title: 'Medium Punch', text: 'MP' },
-          { cls: 'punch-key', val: 'HP', title: 'Heavy Punch', text: 'HP' },
-          { cls: 'kick-key', val: 'LK', title: 'Light Kick', text: 'LK' },
-          { cls: 'kick-key', val: 'MK', title: 'Medium Kick', text: 'MK' },
-          { cls: 'kick-key', val: 'HK', title: 'Heavy Kick', text: 'HK' },
-          { cls: 'spec-key', val: 'DR', title: 'Drive Rush', text: 'DR' },
-          { cls: 'spec-key', val: 'DI', title: 'Drive Impact', text: 'DI' },
-          { cls: 'spec-key', val: '>', title: 'Cancel', text: '>' },
-          { cls: 'spec-key', val: '~', title: 'Chain/Cancel', text: '~' },
-          { cls: 'spec-key', val: ',', title: 'Link', text: ',' },
-        ]
+    buttons: [
+      ...createButtonsFromDict({{ list_buttons_sf6 | default({}) | tojson | safe }}, 'punch-key'),
+      ...createButtonsFromDict({{ list_special_sf6 | default({}) | tojson | safe }}, 'spec-key')
+    ]
       },
-      tekken: {
-        directions: [
-          { cls: 'dir-key', val: 'u/b', title: 'Up/Back', text: 'u/b' },
-          { cls: 'dir-key', val: 'u', title: 'Up', text: 'u' },
-          { cls: 'dir-key', val: 'u/f', title: 'Up/Forward', text: 'u/f' },
-          { cls: 'dir-key', val: 'b', title: 'Back', text: 'b' },
-          { cls: 'dir-key center-key', val: 'N', title: 'Neutral', text: 'N' },
-          { cls: 'dir-key', val: 'f', title: 'Forward', text: 'f' },
-          { cls: 'dir-key', val: 'b/d', title: 'Back/Down', text: 'b/d' },
-          { cls: 'dir-key', val: 'd', title: 'Down', text: 'd' },
-          { cls: 'dir-key', val: 'b/f', title: 'Back/Forward', text: 'b/f' },
-        ],
-        buttons: [
-          { cls: 'punch-key', val: '1', title: 'Left Punch', text: '1' },
-          { cls: 'punch-key', val: '2', title: 'Right Punch', text: '2' },
-          { cls: 'kick-key', val: '3', title: 'Left Kick', text: '3' },
-          { cls: 'kick-key', val: '4', title: 'Right Kick', text: '4' },
-          { cls: 'spec-key', val: 'H', title: 'Heat', text: 'Heat' },
-          { cls: 'spec-key', val: 'R', title: 'Rage Art', text: 'Rage' },
-        ]
+    tekken: {
+      directions: [
+        ...createButtonsFromDict({{ list_movement_tekken | default({}) | tojson | safe }}, 'dir-key'),
+    { cls: 'dir-key', val: ',', title: ',', text: ',' },
+    { cls: 'dir-key', val: 'j.', title: 'j.', text: 'j.' }
+      ],
+    buttons: [
+      ...createButtonsFromDict({{ list_buttons_tekken | default({}) | tojson | safe }}, 'punch-key'),
+      ...createButtonsFromDict({{ list_special_tekken | default({}) | tojson | safe }}, 'spec-key')
+    ]
       },
-      generic: {
-        directions: [
-          { cls: 'dir-key center-key', val: 'N', title: 'Neutral', text: 'N' },
-        ],
-        buttons: [
-          { cls: 'punch-key', val: '1', title: '1', text: '1' },
-          { cls: 'punch-key', val: '2', title: '2', text: '2' },
-          { cls: 'punch-key', val: '3', title: '3', text: '3' },
-          { cls: 'spec-key', val: '4', title: '4', text: '4' },
-          { cls: 'spec-key', val: '5', title: '5', text: '5' },
-          { cls: 'spec-key', val: '6', title: '6', text: '6' },
-        ]
+    twoexko: {
+      directions: [
+        ...createButtonsFromDict({{ list_movement_2xko | default({}) | tojson | safe }}, 'dir-key'),
+    { cls: 'dir-key', val: ',', title: ',', text: ',' },
+    { cls: 'dir-key', val: 'j.', title: 'j.', text: 'j.' }
+      ],
+    buttons: [
+      ...createButtonsFromDict({{ list_buttons_2xko | default({}) | tojson | safe }}, 'punch-key'),
+      ...createButtonsFromDict({{ list_special_2xko | default({}) | tojson | safe }}, 'spec-key')
+    ]
       },
-      twoexko: {
-        directions: [
-          { cls: 'dir-key', val: '7', title: '↖', text: '↖' },
-          { cls: 'dir-key', val: '8', title: '↑', text: '↑' },
-          { cls: 'dir-key', val: '9', title: '↗', text: '↗' },
-          { cls: 'dir-key', val: '4', title: '←', text: '←' },
-          { cls: 'dir-key center-key', val: 'N', title: '·', text: 'N' },
-          { cls: 'dir-key', val: '6', title: '→', text: '→' },
-          { cls: 'dir-key', val: '1', title: '↙', text: '↙' },
-          { cls: 'dir-key', val: '2', title: '↓', text: '↓' },
-          { cls: 'dir-key', val: '3', title: '↘', text: '↘' },
-        ],
+    generic: {
+      directions: [
+        { cls: 'center-key', val: '8', title: 'Up', text: '8' },
+        { cls: 'center-key', val: '2', title: 'Down', text: '2' },
+        { cls: 'center-key', val: '4', title: 'Left', text: '4' },
+        { cls: 'center-key', val: '6', title: 'Right', text: '6' },
+        { cls: 'center-key', val: '7', title: 'UpLeft', text: '7' },
+        { cls: 'center-key', val: '9', title: 'UpRight', text: '9' },
+        { cls: 'center-key', val: '1', title: 'DownLeft', text: '1' },
+        { cls: 'center-key', val: '3', title: 'DownRight', text: '3' },
+        { cls: 'center-key', val: 'N', title: 'Neutral', text: '5' },
+        { cls: 'center-key', val: ',', title: ',', text: ',' },
+        { cls: 'center-key', val: 'j.', title: 'j.', text: 'j.' }
+      ],
         buttons: [
-          { cls: 'punch-key', val: 'L', title: 'Light', text: 'L' },
-          { cls: 'punch-key', val: 'M', title: 'Medium', text: 'M' },
-          { cls: 'punch-key', val: 'H', title: 'Heavy', text: 'H' },
-          { cls: 'kick-key', val: 'D', title: 'Dash', text: 'D' },
-          { cls: 'kick-key', val: 'S1', title: 'Special 1', text: 'S1' },
-          { cls: 'kick-key', val: 'S2', title: 'Special 2', text: 'S2' },
-          { cls: 'spec-key', val: 'T', title: 'Tag', text: 'T' },
-          { cls: 'spec-key', val: 'B', title: 'Break', text: 'B' },
+          { cls: 'punch-key', val: 'LP', title: '1', text: 'LP' },
+          { cls: 'punch-key', val: 'MP', title: '2', text: 'MP' },
+          { cls: 'punch-key', val: 'HP', title: '3', text: 'HP' },
+          { cls: 'punch-key', val: 'P', title: '4', text: 'P' },
+          { cls: 'punch-key', val: 'PPP', title: '5', text: 'PPP' },
+          { cls: 'kick-key', val: 'LK', title: '6', text: 'LK' },
+          { cls: 'kick-key', val: 'MK', title: '7', text: 'MK' },
+          { cls: 'kick-key', val: 'HK', title: '8', text: 'HK' },
+          { cls: 'kick-key', val: 'K', title: '9', text: 'K' },
+          { cls: 'kick-key', val: 'KKK', title: '10', text: 'KKK' },
         ]
-      }
+    }
     };
 
     function renderKeyboard(game) {
@@ -849,8 +886,15 @@
           const button = document.createElement('button');
           button.className = `kbd-key ${btn.cls}`;
           button.dataset.val = btn.val;
+          button.dataset.img = btn.img || '';
           button.title = btn.title;
-          button.textContent = btn.text;
+
+          if (btn.img) {
+            button.innerHTML = `<img src="${btn.img}" alt="${btn.val}" style="max-width:36px; max-height:36px; object-fit:contain;">`;
+          } else {
+            button.textContent = btn.text;
+          }
+
           dirGrid.appendChild(button);
         });
       }
@@ -863,8 +907,15 @@
           const button = document.createElement('button');
           button.className = `kbd-key ${btn.cls}`;
           button.dataset.val = btn.val;
+          button.dataset.img = btn.img || '';
           button.title = btn.title;
-          button.textContent = btn.text;
+
+          if (btn.img) {
+            button.innerHTML = `<img src="${btn.img}" alt="${btn.val}" style="max-width:36px; max-height:36px; object-fit:contain;">`;
+          } else {
+            button.textContent = btn.text;
+          }
+
           btnGrid.appendChild(button);
         });
       }
@@ -874,4 +925,5 @@
     ['sf6', 'tekken', 'generic', 'twoexko'].forEach(game => renderKeyboard(game));
   </script>
 </body>
+
 </html>
