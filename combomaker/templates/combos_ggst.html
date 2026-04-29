@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="kbd-game-section" id="kbd-ggst">
+        <div class="kbd-header">
+          <div class="kbd-title-row">
+            <span class="kbd-game-badge">GGST</span>
+            <h2 class="kbd-title">TECLADO PARA GUILTY GEAR STRIVE</h2>
+          </div>
+        </div>
+        <div class="kbd-layout" style="margin-top:1.5rem;">
+          <div class="kbd-block">
+            <p class="kbd-block-label">MOVIMIENTO</p>
+            <div class="kbd-grid dir-grid" id="dir-grid-ggst"></div>
+          </div>
+          <div class="kbd-sep"></div>
+          <div class="kbd-block">
+            <p class="kbd-block-label">BOTONES</p>
+            <div class="kbd-grid btn-grid" id="btn-grid-ggst"></div>
+          </div>
+        </div>
+        <div class="kbd-footer" style="margin-top:1rem;">
+          <button class="kbd-action-btn secondary" onclick="clearLast()">⌫ Borrar último</button>
+          <button class="kbd-action-btn secondary" onclick="clearAll()">⌧ Limpiar</button>
+          <button class="kbd-action-btn secondary" onclick="exportCombo()"
+            style="border-color: var(--accent); color: var(--accent); padding: 0.4rem 0.8rem; font-size: 0.7rem;">
+            ⭳ Exportar PNG
+          </button>
+        </div>
+      </div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+  renderKeyboard('ggst');
+</script>
+{% endblock %}

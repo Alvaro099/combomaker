@@ -712,6 +712,9 @@
       <a href="{{ url_for('home.combos_generico') }}" class="game-btn {% if request.endpoint == 'home.combos_generico' %}active-game{% endif %}">Generic</a>
       <a href="{{ url_for('home.combos_tekken') }}" class="game-btn {% if request.endpoint == 'home.combos_tekken' %}active-game{% endif %}">TEKKEN 8</a>
       <a href="{{ url_for('home.combos_sf6') }}" class="game-btn {% if request.endpoint == 'home.combos_sf6' %}active-game{% endif %}">SF6</a>
+      <a href="{{ url_for('home.combos_fatal_fury') }}" class="game-btn {% if request.endpoint == 'home.combos_fatal_fury' %}active-game{% endif %}">FATAL FURY</a>
+      <a href="{{ url_for('home.combos_kofxv') }}" class="game-btn {% if request.endpoint == 'home.combos_kofxv' %}active-game{% endif %}">KOF XV</a>
+      <a href="{{ url_for('home.combos_ggst') }}" class="game-btn {% if request.endpoint == 'home.combos_ggst' %}active-game{% endif %}">GGST</a>
     </nav>
   </header>
   <main>
@@ -930,6 +933,39 @@
           { cls: 'kick-key', val: 'K', title: '9', text: 'K' },
           { cls: 'kick-key', val: 'KKK', title: '10', text: 'KKK' },
         ]
+    },
+    fatal_fury: {
+      directions: [
+        ...createButtonsFromDict({{ list_movement_fatal_fury | default({}) | tojson | safe }}, 'dir-key'),
+        { cls: 'dir-key', val: ',', title: ',', text: ',' },
+        { cls: 'dir-key', val: 'j.', title: 'j.', text: 'j.' }
+      ],
+      buttons: [
+        ...createButtonsFromDict({{ list_buttons_fatal_fury | default({}) | tojson | safe }}, 'punch-key'),
+        ...createButtonsFromDict({{ list_special_fatal_fury | default({}) | tojson | safe }}, 'spec-key')
+      ]
+    },
+    kofxv: {
+      directions: [
+        ...createButtonsFromDict({{ list_movement_kofxv | default({}) | tojson | safe }}, 'dir-key'),
+        { cls: 'dir-key', val: ',', title: ',', text: ',' },
+        { cls: 'dir-key', val: 'j.', title: 'j.', text: 'j.' }
+      ],
+      buttons: [
+        ...createButtonsFromDict({{ list_buttons_kofxv | default({}) | tojson | safe }}, 'punch-key'),
+        ...createButtonsFromDict({{ list_special_kofxv | default({}) | tojson | safe }}, 'spec-key')
+      ]
+    },
+    ggst: {
+      directions: [
+        ...createButtonsFromDict({{ list_movement_ggst | default({}) | tojson | safe }}, 'dir-key'),
+        { cls: 'dir-key', val: ',', title: ',', text: ',' },
+        { cls: 'dir-key', val: 'j.', title: 'j.', text: 'j.' }
+      ],
+      buttons: [
+        ...createButtonsFromDict({{ list_buttons_ggst | default({}) | tojson | safe }}, 'punch-key'),
+        ...createButtonsFromDict({{ list_special_ggst | default({}) | tojson | safe }}, 'spec-key')
+      ]
     }
     };
 

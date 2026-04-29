@@ -4,7 +4,7 @@ bp = Blueprint('home', __name__)
 
 @bp.route('/')
 def index():
-    
+
     return render_template('home.html'
     )
 
@@ -148,5 +148,132 @@ def combos_sf6():
 def combos_generico():
     return render_template('combos_generico.html')
 
+
+@bp.route('/combos/fatal_fury')
+def combos_fatal_fury():
+
+    list_buttons_fatal_fury = { 
+        "ico1" : "combomaker/static/Fatal Fury Notation PNGs/buttons/ico_explanation01.png",
+        "ico2" : "combomaker/static/Fatal Fury Notation PNGs/buttons/ico_explanation02.png",
+        "ico3" : "combomaker/static/Fatal Fury Notation PNGs/buttons/ico_explanation03.png",
+        "ico4" : "combomaker/static/Fatal Fury Notation PNGs/buttons/ico_explanation04.png",
+        "ico7" : "combomaker/static/Fatal Fury Notation PNGs/buttons/ico_explanation07.png",
+        "ico8" : "combomaker/static/Fatal Fury Notation PNGs/buttons/ico_explanation08.png",
+        "ico9" : "combomaker/static/Fatal Fury Notation PNGs/buttons/ico_explanation09.png",
+        "ico10" : "combomaker/static/Fatal Fury Notation PNGs/buttons/ico_explanation10.png",
+        "ico16" : "combomaker/static/Fatal Fury Notation PNGs/buttons/ico_explanation16.png",
+        "ico17" : "combomaker/static/Fatal Fury Notation PNGs/buttons/ico_explanation17.png",
+    }
+
+    list_movement_fatal_fury = { 
+        "2QCF_Input" : "combomaker/static/Fatal Fury Notation PNGs/movement/2QCF_Input.webp",
+        "360_Input" : "combomaker/static/Fatal Fury Notation PNGs/movement/360_Input.webp",
+        "Back_Input" : "combomaker/static/Fatal Fury Notation PNGs/movement/Back_Input.webp",
+        "Double_Down_Input" : "combomaker/static/Fatal Fury Notation PNGs/movement/Double_Down_Input.webp",
+        "Down_Forward_Input" : "combomaker/static/Fatal Fury Notation PNGs/movement/Down_Forward_Input.webp",
+        "Down_Input" : "combomaker/static/Fatal Fury Notation PNGs/movement/Down_Input.webp",
+        "Down_Up_Input" : "combomaker/static/Fatal Fury Notation PNGs/movement/Down_Up_Input.webp",
+        "EX_OK" : "combomaker/static/Fatal Fury Notation PNGs/movement/EX_OK.webp",
+        "Forward_Input" : "combomaker/static/Fatal Fury Notation PNGs/movement/Forward_Input.webp",
+        "HCB_Input" : "combomaker/static/Fatal Fury Notation PNGs/movement/HCB_Input.webp",
+        "HCBF_Input" : "combomaker/static/Fatal Fury Notation PNGs/movement/HCBF_Input.webp",
+        "HCF_Input" : "combomaker/static/Fatal Fury Notation PNGs/movement/HCF_Input.webp",
+        "Neutral_Input" : "combomaker/static/Fatal Fury Notation PNGs/movement/Neutral_Input.webp",
+        "QCB_Input" : "combomaker/static/Fatal Fury Notation PNGs/movement/QCB_Input.webp",
+        "QCBHCF_Input" : "combomaker/static/Fatal Fury Notation PNGs/movement/QCBHCF_Input.webp",
+        "QCF_Input" : "combomaker/static/Fatal Fury Notation PNGs/movement/QCF_Input.webp",
+        "QCFHCB_Input" : "combomaker/static/Fatal Fury Notation PNGs/movement/QCFHCB_Input.webp",
+        "RZ_Input" : "combomaker/static/Fatal Fury Notation PNGs/movement/RZ_Input.webp",
+        "Z_Input" : "combomaker/static/Fatal Fury Notation PNGs/movement/Z_Input.webp",
+    }
+
+    list_special_fatal_fury = { 
+        "ico5" : "combomaker/static/Fatal Fury Notation PNGs/special/ico_explanation05.png",
+        "ico11" : "combomaker/static/Fatal Fury Notation PNGs/special/ico_explanation11.png",
+        "ico12" : "combomaker/static/Fatal Fury Notation PNGs/special/ico_explanation12.png",
+        "ico13" : "combomaker/static/Fatal Fury Notation PNGs/special/ico_explanation13.png",
+        "ico14" : "combomaker/static/Fatal Fury Notation PNGs/special/ico_explanation14.png",
+        "ico15" : "combomaker/static/Fatal Fury Notation PNGs/special/ico_explanation15.png",
+    }
+
+    return render_template('combos_fatal_fury.html', list_buttons_fatal_fury=list_buttons_fatal_fury, list_movement_fatal_fury=list_movement_fatal_fury, list_special_fatal_fury=list_special_fatal_fury)  
+
+
+
+@bp.route('/combos/kofxv')
+def combos_kofxv():
+
+    list_buttons_kofxv = { 
+        "icn9" : "combomaker/static/KOFXV Notation PNGs/buttons/icn9.png",
+        "icn10" : "combomaker/static/KOFXV Notation PNGs/buttons/icn10.png",
+        "icn12" : "combomaker/static/KOFXV Notation PNGs/buttons/icn12.png",
+        "icn13" : "combomaker/static/KOFXV Notation PNGs/buttons/icn13.png",
+        "icn14" : "combomaker/static/KOFXV Notation PNGs/buttons/icn14.png",
+        "icn15" : "combomaker/static/KOFXV Notation PNGs/buttons/icn15.png",
+        
+        
+    }
+
+    list_movement_kofxv = { 
+
+        "2QCF_Input" : "combomaker/static/KOFXV Notation PNGs/movement/2QCF_Input.webp",
+        "360_Input" : "combomaker/static/KOFXV Notation PNGs/movement/360_Input.webp",
+        "Back_Input" : "combomaker/static/KOFXV Notation PNGs/movement/Back_Input.webp",
+        "Double_Down_Input" : "combomaker/static/KOFXV Notation PNGs/movement/Double_Down_Input.webp",
+        "Down_Forward_Input" : "combomaker/static/KOFXV Notation PNGs/movement/Down_Forward_Input.webp",
+        "Down_Input" : "combomaker/static/KOFXV Notation PNGs/movement/Down_Input.webp",
+        "Down_Up_Input" : "combomaker/static/KOFXV Notation PNGs/movement/Down_Up_Input.webp",
+        "Forward_Input" : "combomaker/static/KOFXV Notation PNGs/movement/Forward_Input.webp",
+        "HCB_Input" : "combomaker/static/KOFXV Notation PNGs/movement/HCB_Input.webp",
+        "HCBF_Input" : "combomaker/static/KOFXV Notation PNGs/movement/HCBF_Input.webp",
+        "HCF_Input" : "combomaker/static/KOFXV Notation PNGs/movement/HCF_Input.webp",
+        "Neutral_Input" : "combomaker/static/KOFXV Notation PNGs/movement/Neutral_Input.webp",
+        "QCB_Input" : "combomaker/static/KOFXV Notation PNGs/movement/QCB_Input.webp",
+        "QCBHCF_Input" : "combomaker/static/KOFXV Notation PNGs/movement/QCBHCF_Input.webp",
+        "QCF_Input" : "combomaker/static/KOFXV Notation PNGs/movement/QCF_Input.webp",
+        "QCFHCB_Input" : "combomaker/static/KOFXV Notation PNGs/movement/QCFHCB_Input.webp",
+        "RZ_Input" : "combomaker/static/KOFXV Notation PNGs/movement/RZ_Input.webp",
+        "Z_Input" : "combomaker/static/KOFXV Notation PNGs/movement/Z_Input.webp",
+        
+    }
+
+    list_special_kofxv = { 
+
+        "icn1" : "combomaker/static/KOFXV Notation PNGs/specials/icn1.png",
+        "icn2" : "combomaker/static/KOFXV Notation PNGs/specials/icn2.png",
+        "icn3" : "combomaker/static/KOFXV Notation PNGs/specials/icn3.png",
+        "icn4" : "combomaker/static/KOFXV Notation PNGs/specials/icn4.png",
+        "icn5" : "combomaker/static/KOFXV Notation PNGs/specials/icn5.png",
+        "icn6" : "combomaker/static/KOFXV Notation PNGs/specials/icn6.png",
+        "icn7" : "combomaker/static/KOFXV Notation PNGs/specials/icn7.png",
+        "icn8" : "combomaker/static/KOFXV Notation PNGs/specials/icn8.png",
+        "icn18" : "combomaker/static/KOFXV Notation PNGs/specials/icn18.png",
+        "icn19" : "combomaker/static/KOFXV Notation PNGs/specials/icn19.png",
+        "icn20" : "combomaker/static/KOFXV Notation PNGs/specials/icn20.png",
+        "icn21" : "combomaker/static/KOFXV Notation PNGs/specials/icn20.png",
+        
+    }
+
+
+    return render_template('combos_kofxv.html', list_buttons_kofxv=list_buttons_kofxv, list_movement_kofxv=list_movement_kofxv, list_special_kofxv=list_special_kofxv)  
+
+
+@bp.route('/combos/ggst')
+def combos_ggst():
+
+    list_buttons_ggst = { 
+        
+    }
+
+    list_movement_ggst = { 
+        
+    }
+
+    list_special_ggst = { 
+        
+    }
+
+
+    return render_template('combos_ggst.html', list_buttons_ggst=list_buttons_ggst, list_movement_ggst=list_movement_ggst, list_special_ggst=list_special_ggst)  
 
 
