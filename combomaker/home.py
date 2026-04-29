@@ -38,7 +38,7 @@ def combos_2xko():
 
     list_special_2xko = {
         "Sequence" : "combomaker/static/TWOXKO Notation PNGs/special/2XKO_Sequence_icon.png ",
-        "Tag" : "combomaker/static/TWOXKO Notation PNGs/special/2XKO_Tag_input_icon.png",
+        "Tag" : "combomaker/static/TWOXKO Notation PNGs/special/2XKO_Tag_Input_icon.png",
     }
 
     return render_template('combos_2xko.html', list_buttons_2xko=list_buttons_2xko, list_movement_2xko=list_movement_2xko, list_special_2xko=list_special_2xko)
