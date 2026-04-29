@@ -8,6 +8,18 @@
   ],
   "routes": [
     {
+      "src": "/static/Street Fighter 6 Notation PNGs/(.*)",
+      "dest": "/combomaker/static/Street Fighter 6 Notation PNGs/$1"
+    },
+    {
+      "src": "/static/TWOXKO Notation PNGs/(.*)",
+      "dest": "/combomaker/static/TWOXKO Notation PNGs/$1"
+    },
+    {
+      "src": "/static/Tekken Notation PNGs/(.*)",
+      "dest": "/combomaker/static/Tekken Notation PNGs/$1"
+    },
+    {
       "src": "/static/(.*)",
       "dest": "/combomaker/static/$1"
     },
