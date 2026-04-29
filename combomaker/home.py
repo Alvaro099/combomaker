@@ -4,6 +4,15 @@ bp = Blueprint('home', __name__)
 
 @bp.route('/')
 def index():
+    
+    return render_template('home.html'
+    )
+
+
+
+
+@bp.route('/combos/2xko')
+def combos_2xko():
 
     list_buttons_2xko = {
     "Heavy": "combomaker/static/TWOXKO Notation PNGs/buttons/2XKO_Heavy_Input_icon.png",
@@ -31,6 +40,12 @@ def index():
         "Sequence" : "combomaker/static/TWOXKO Notation PNGs/special/2XKO_Sequence_icon.png ",
         "Tag" : "combomaker/static/TWOXKO Notation PNGs/special/2XKO_Tag_input_icon.png",
     }
+
+    return render_template('combos_2xko.html', list_buttons_2xko=list_buttons_2xko, list_movement_2xko=list_movement_2xko, list_special_2xko=list_special_2xko)
+
+
+@bp.route('/combos/tekken')
+def combos_tekken():
 
     list_buttons_tekken = { 
         "0" : "combomaker/static/Tekken Notation PNGs/buttons/0.png",
@@ -88,6 +103,12 @@ def index():
         "Wallbreak" : "combomaker/static/Tekken Notation PNGs/special/Wallbreak.png",
     }
 
+    return render_template('combos_tekken.html', list_buttons_tekken=list_buttons_tekken, list_movement_tekken=list_movement_tekken, list_special_tekken=list_special_tekken)
+
+
+@bp.route('/combos/sf6')
+def combos_sf6():
+
     list_movement_sf6 = {
         "key-d" : "combomaker/static/Street Fighter 6 Notation PNGs/movement/key-d.png" ,
         "key-dc" : "combomaker/static/Street Fighter 6 Notation PNGs/movement/key-dc.png" ,
@@ -120,20 +141,12 @@ def index():
         "modern_sp" : "combomaker/static/Street Fighter 6 Notation PNGs/special/modern_sp.png",
     }
 
+    return render_template('combos_sf6.html', list_buttons_sf6=list_buttons_sf6, list_movement_sf6=list_movement_sf6, list_special_sf6=list_special_sf6)
 
 
-    
+@bp.route('/combos/generico')
+def combos_generico():
+    return render_template('combos_generico.html')
 
-    return render_template('home.html',
-        list_movement_2xko=list_movement_2xko,
-        list_buttons_2xko=list_buttons_2xko,
-        list_special_2xko=list_special_2xko,
-        list_movement_tekken=list_movement_tekken,
-        list_buttons_tekken=list_buttons_tekken,
-        list_special_tekken=list_special_tekken,
-        list_movement_sf6=list_movement_sf6,
-        list_buttons_sf6=list_buttons_sf6,
-        list_special_sf6=list_special_sf6
-    )
 
 
