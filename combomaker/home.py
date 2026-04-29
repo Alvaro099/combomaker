@@ -295,6 +295,7 @@ def combos_ggst():
         "icn1" : "combomaker/static/Strive Notation PNGs/specials/icn1.webp",
         "icn2" : "combomaker/static/Strive Notation PNGs/specials/icn2.webp",
         "icn3" : "combomaker/static/Strive Notation PNGs/specials/icn3.webp",
+        "icn4" : "combomaker/static/Strive Notation PNGs/specials/icn6.png",
     }
 
 
