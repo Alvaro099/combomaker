@@ -12,12 +12,40 @@
       "dest": "/combomaker/static/Street Fighter 6 Notation PNGs/$1"
     },
     {
-      "src": "/static/TWOXKO Notation PNGs/(.*)",
-      "dest": "/combomaker/static/TWOXKO Notation PNGs/$1"
+      "src": "/static/Street Fighter 6 Notation PNGs/buttons(.*)",
+      "dest": "/combomaker/static/Street Fighter 6 Notation PNGs/buttons/$1"
     },
     {
-      "src": "/static/Tekken Notation PNGs/(.*)",
-      "dest": "/combomaker/static/Tekken Notation PNGs/$1"
+      "src": "/static/Street Fighter 6 Notation PNGs/movement(.*)",
+      "dest": "/combomaker/static/Street Fighter 6 Notation PNGs/movement/$1"
+    },
+    {
+      "src": "/static/Street Fighter 6 Notation PNGs/special(.*)",
+      "dest": "/combomaker/static/Street Fighter 6 Notation PNGs/special/$1"
+    },
+    {
+      "src": "/static/Tekken Notation PNGs/buttons(.*)",
+      "dest": "/combomaker/static/Tekken Notation PNGs/buttons/$1"
+    },
+    {
+      "src": "/static/Tekken Notation PNGs/movement(.*)",
+      "dest": "/combomaker/static/Tekken Notation PNGs/movement/$1"
+    },
+    {
+      "src": "/static/Tekken Notation PNGs/special(.*)",
+      "dest": "/combomaker/static/Tekken Notation PNGs/special/$1"
+    },
+    {
+      "src": "/static/TWOXKO Notation PNGs/buttons(.*)",
+      "dest": "/combomaker/static/TWOXKO Notation PNGs/buttons/$1"
+    },
+    {
+      "src": "/static/TWOXKO Notation PNGs/movement(.*)",
+      "dest": "/combomaker/static/TWOXKO Notation PNGs/movement/$1"
+    },
+    {
+      "src": "/static/TWOXKO Notation PNGs/special(.*)",
+      "dest": "/combomaker/static/TWOXKO Notation PNGs/special/$1"
     },
     {
       "src": "/static/(.*)",
