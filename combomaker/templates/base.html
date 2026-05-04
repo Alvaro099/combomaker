@@ -710,24 +710,18 @@
       <div class="logo">COMBO<span>MAKER</span></div>
     </a>
     <nav class="game-nav">
-      <a href="{{ url_for('home.combos_2xko') }}"
-        class="game-btn {% if request.endpoint == 'home.combos_2xko' %}active-game{% endif %}">2XKO</a>
-      <a href="{{ url_for('home.combos_generico') }}"
-        class="game-btn {% if request.endpoint == 'home.combos_generico' %}active-game{% endif %}">Generic</a>
-      <a href="{{ url_for('home.combos_tekken') }}"
-        class="game-btn {% if request.endpoint == 'home.combos_tekken' %}active-game{% endif %}">TEKKEN 8</a>
-      <a href="{{ url_for('home.combos_sf6') }}"
-        class="game-btn {% if request.endpoint == 'home.combos_sf6' %}active-game{% endif %}">SF6</a>
-      <a href="{{ url_for('home.combos_fatal_fury') }}"
-        class="game-btn {% if request.endpoint == 'home.combos_fatal_fury' %}active-game{% endif %}">FATAL FURY</a>
-      <a href="{{ url_for('home.combos_kofxv') }}"
-        class="game-btn {% if request.endpoint == 'home.combos_kofxv' %}active-game{% endif %}">KOF XV</a>
-      <a href="{{ url_for('home.combos_ggst') }}"
-        class="game-btn {% if request.endpoint == 'home.combos_ggst' %}active-game{% endif %}">GGST</a>
-      <a href="{{ url_for('home.combos_dbfz') }}"
-        class="game-btn {% if request.endpoint == 'home.combos_dbfz' %}active-game{% endif %}">DBFZ</a>
-      <a href="{{ url_for('home.combos_animefg') }}"
-        class="game-btn {% if request.endpoint == 'home.combos_animefg' %}active-game{% endif %}">ANIME FG</a>
+      <select class="game-select" onchange="window.location.href=this.value" style="background: var(--surface2); color: var(--text); border: 1px solid var(--border); padding: 0.5rem 1rem; border-radius: 6px; font-family: var(--sans); font-size: 1.05rem; font-weight: 500; cursor: pointer; outline: none;">
+        <option value="" disabled {% if request.endpoint == 'home.index' %}selected{% endif %}>Selecciona un juego</option>
+        <option value="{{ url_for('home.combos_2xko') }}" {% if request.endpoint == 'home.combos_2xko' %}selected{% endif %}>2XKO</option>
+        <option value="{{ url_for('home.combos_generico') }}" {% if request.endpoint == 'home.combos_generico' %}selected{% endif %}>Generic</option>
+        <option value="{{ url_for('home.combos_tekken') }}" {% if request.endpoint == 'home.combos_tekken' %}selected{% endif %}>TEKKEN 8</option>
+        <option value="{{ url_for('home.combos_sf6') }}" {% if request.endpoint == 'home.combos_sf6' %}selected{% endif %}>SF6</option>
+        <option value="{{ url_for('home.combos_fatal_fury') }}" {% if request.endpoint == 'home.combos_fatal_fury' %}selected{% endif %}>FATAL FURY</option>
+        <option value="{{ url_for('home.combos_kofxv') }}" {% if request.endpoint == 'home.combos_kofxv' %}selected{% endif %}>KOF XV</option>
+        <option value="{{ url_for('home.combos_ggst') }}" {% if request.endpoint == 'home.combos_ggst' %}selected{% endif %}>GGST</option>
+        <option value="{{ url_for('home.combos_dbfz') }}" {% if request.endpoint == 'home.combos_dbfz' %}selected{% endif %}>DBFZ</option>
+        <option value="{{ url_for('home.combos_animefg') }}" {% if request.endpoint == 'home.combos_animefg' %}selected{% endif %}>ANIME FG</option>
+      </select>
     </nav>
   </header>
   <main>
