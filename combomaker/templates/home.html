@@ -6,11 +6,60 @@
 <div class="kbd-game-section" style="border: none; box-shadow: none;">
   <div class="kbd-header" style="justify-content: center; text-align: center; padding: 3rem 0;">
     <div>
-      <h2 class="kbd-title" style="font-size: 2.5rem; margin-bottom: 1.5rem; color: var(--accent);">¡BIENVENIDO A COMBOMAKER!</h2>
+      <h2 class="kbd-title" style="font-size: 2.5rem; margin-bottom: 1.5rem; color: var(--accent);">¡BIENVENIDO A
+        COMBOMAKER!</h2>
       <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto; line-height: 1.6;">
         Selecciona un juego en el menú superior para comenzar a crear y exportar tus combos con notación visual.
       </p>
     </div>
+  </div>
+  <style>
+    .project-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      transition: all 0.2s ease;
+      height: 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--accent-dim);
+      border-color: var(--accent);
+    }
+    .project-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+  </style>
+
+  <div class="kbd-header" style="justify-content: center; text-align: center; margin-top: 2rem; margin-bottom: 2rem;">
+    <h3 class="kbd-title" style="font-size: 1.5rem; color: var(--text-muted); letter-spacing: 0.1em;">MIS OTROS PROYECTOS</h3>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 800px; margin: 0 auto;">
+    <a href="https://versushighligts-main.vercel.app" target="_blank" rel="noopener noreferrer" class="project-link">
+      <div class="project-card">
+        <h3 class="kbd-title" style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--accent);">Versus Highlights</h3>
+        <p style="color: var(--text-muted); font-size: 1.05rem; margin: 0 auto; line-height: 1.6;">
+          App web que te permite crear miniaturas VS para redes
+        </p>
+      </div>
+    </a>
+    <a href="https://p3cv-nirval.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link">
+      <div class="project-card">
+        <h3 class="kbd-title" style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--accent);">CV Esports</h3>
+        <p style="color: var(--text-muted); font-size: 1.05rem; margin: 0 auto; line-height: 1.6;">
+          Mi currículum como relator dentro de la FGC
+        </p>
+      </div>
+    </a>
   </div>
 </div>
 {% endblock %}
