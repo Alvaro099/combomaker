@@ -306,16 +306,79 @@ def combos_ggst():
 def combos_dbfz():
 
     list_buttons_dbfz = { 
+        "inputicon_1" : "combomaker/static/Strive Notation PNGs/movement/24px-InputIcon_1.png",
+        "inputicon_2" : "combomaker/static/Strive Notation PNGs/movement/24px-InputIcon_2.png",
+        "inputicon_3" : "combomaker/static/Strive Notation PNGs/movement/24px-InputIcon_3.png",
+        "inputicon_4" : "combomaker/static/Strive Notation PNGs/movement/24px-InputIcon_4.png",
+        "inputicon_5" : "combomaker/static/Strive Notation PNGs/movement/24px-InputIcon_5.png",
+        "inputicon_6" : "combomaker/static/Strive Notation PNGs/movement/24px-InputIcon_6.png",
+        "inputicon_7" : "combomaker/static/Strive Notation PNGs/movement/24px-InputIcon_7.png",
+        "inputicon_8" : "combomaker/static/Strive Notation PNGs/movement/24px-InputIcon_8.png",
+        "inputicon_9" : "combomaker/static/Strive Notation PNGs/movement/24px-InputIcon_9.png",
+        "inputicon_214" : "combomaker/static/Strive Notation PNGs/movement/24px-InputIcon_214.png",
+        "inputicon_236" : "combomaker/static/Strive Notation PNGs/movement/24px-InputIcon_236.png",
+        "inputicon_360" : "combomaker/static/Strive Notation PNGs/movement/24px-InputIcon_360.png",
+        "inputicon_623" : "combomaker/static/Strive Notation PNGs/movement/24px-InputIcon_623.png",
+        "inputicon_41236" : "combomaker/static/Strive Notation PNGs/movement/24px-InputIcon_41236.png",
+        "inputicon_63214" : "combomaker/static/Strive Notation PNGs/movement/24px-InputIcon_63214.png",
         
     }
 
     list_movement_dbfz = { 
+        "input_H" : "combomaker/static/DBFZ Notation PNGs/buttons/Input_H.webp",
+        "input_L" : "combomaker/static/DBFZ Notation PNGs/buttons/Input_L.webp",
+        "input_M" : "combomaker/static/DBFZ Notation PNGs/buttons/Input_M.webp",
+        "input_S" : "combomaker/static/DBFZ Notation PNGs/buttons/Input_S.webp",
         
     }
 
     list_special_dbfz = { 
+        "Follow-Up_icon" : "combomaker/static/DBFZ Notation PNGs/special/Follow-up_icon.webp",
+        "Assist_A1" : "combomaker/static/DBFZ Notation PNGs/special/Input_A1.webp",
+        "Assist_A2" : "combomaker/static/DBFZ Notation PNGs/special/Input_A2.webp",
+        
+       
         
     }
 
 
     return render_template('combos_dbfz.html', list_buttons_dbfz=list_buttons_dbfz, list_movement_dbfz=list_movement_dbfz, list_special_dbfz=list_special_dbfz)  
+
+
+@bp.route('/combos/animefg')
+def combos_animefg():
+
+    list_buttons_animefg = { 
+        "inputicon_1" : "combomaker/static/Strive Notation PNGs/movement/24px-InputIcon_1.png",
+        "inputicon_2" : "combomaker/static/Strive Notation PNGs/movement/24px-InputIcon_2.png",
+        "inputicon_3" : "combomaker/static/Strive Notation PNGs/movement/24px-InputIcon_3.png",
+        "inputicon_4" : "combomaker/static/Strive Notation PNGs/movement/24px-InputIcon_4.png",
+        "inputicon_5" : "combomaker/static/Strive Notation PNGs/movement/24px-InputIcon_5.png",
+        "inputicon_6" : "combomaker/static/Strive Notation PNGs/movement/24px-InputIcon_6.png",
+        "inputicon_7" : "combomaker/static/Strive Notation PNGs/movement/24px-InputIcon_7.png",
+        "inputicon_8" : "combomaker/static/Strive Notation PNGs/movement/24px-InputIcon_8.png",
+        "inputicon_9" : "combomaker/static/Strive Notation PNGs/movement/24px-InputIcon_9.png",
+        "inputicon_214" : "combomaker/static/Strive Notation PNGs/movement/24px-InputIcon_214.png",
+        "inputicon_236" : "combomaker/static/Strive Notation PNGs/movement/24px-InputIcon_236.png",
+        "inputicon_360" : "combomaker/static/Strive Notation PNGs/movement/24px-InputIcon_360.png",
+        "inputicon_623" : "combomaker/static/Strive Notation PNGs/movement/24px-InputIcon_623.png",
+        "inputicon_41236" : "combomaker/static/Strive Notation PNGs/movement/24px-InputIcon_41236.png",
+        "inputicon_63214" : "combomaker/static/Strive Notation PNGs/movement/24px-InputIcon_63214.png",
+    }
+
+    list_movement_animefg = { 
+        "Input_A" : "combomaker/static/Anime Notation PNGs/22px-BBCF_A_Prompt.png",
+        "Input_B" : "combomaker/static/Anime Notation PNGs/22px-BBCF_B_Prompt.png",
+        "Input_C" : "combomaker/static/Anime Notation PNGs/22px-BBCF_C_Prompt.png",
+        "Input_D" : "combomaker/static/Anime Notation PNGs/22px-BBCF_D_Prompt.png",
+    }
+
+    list_special_animefg = { 
+        
+       
+        
+    }
+
+
+    return render_template('combos_animefg.html', list_buttons_animefg=list_buttons_animefg, list_movement_animefg=list_movement_animefg, list_special_animefg=list_special_animefg)
+

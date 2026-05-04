@@ -474,6 +474,7 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 4px;
+      background-color: grey;
     }
 
     .kbd-preview-empty {
@@ -503,6 +504,7 @@
       footer {
         padding: 1rem 1.2rem;
       }
+
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
       gap: 12px;
@@ -708,22 +710,47 @@
       <div class="logo">COMBO<span>MAKER</span></div>
     </a>
     <nav class="game-nav">
-      <a href="{{ url_for('home.combos_2xko') }}" class="game-btn {% if request.endpoint == 'home.combos_2xko' %}active-game{% endif %}">2XKO</a>
-      <a href="{{ url_for('home.combos_generico') }}" class="game-btn {% if request.endpoint == 'home.combos_generico' %}active-game{% endif %}">Generic</a>
-      <a href="{{ url_for('home.combos_tekken') }}" class="game-btn {% if request.endpoint == 'home.combos_tekken' %}active-game{% endif %}">TEKKEN 8</a>
-      <a href="{{ url_for('home.combos_sf6') }}" class="game-btn {% if request.endpoint == 'home.combos_sf6' %}active-game{% endif %}">SF6</a>
-      <a href="{{ url_for('home.combos_fatal_fury') }}" class="game-btn {% if request.endpoint == 'home.combos_fatal_fury' %}active-game{% endif %}">FATAL FURY</a>
-      <a href="{{ url_for('home.combos_kofxv') }}" class="game-btn {% if request.endpoint == 'home.combos_kofxv' %}active-game{% endif %}">KOF XV</a>
-      <a href="{{ url_for('home.combos_ggst') }}" class="game-btn {% if request.endpoint == 'home.combos_ggst' %}active-game{% endif %}">GGST</a>
+      <a href="{{ url_for('home.combos_2xko') }}"
+        class="game-btn {% if request.endpoint == 'home.combos_2xko' %}active-game{% endif %}">2XKO</a>
+      <a href="{{ url_for('home.combos_generico') }}"
+        class="game-btn {% if request.endpoint == 'home.combos_generico' %}active-game{% endif %}">Generic</a>
+      <a href="{{ url_for('home.combos_tekken') }}"
+        class="game-btn {% if request.endpoint == 'home.combos_tekken' %}active-game{% endif %}">TEKKEN 8</a>
+      <a href="{{ url_for('home.combos_sf6') }}"
+        class="game-btn {% if request.endpoint == 'home.combos_sf6' %}active-game{% endif %}">SF6</a>
+      <a href="{{ url_for('home.combos_fatal_fury') }}"
+        class="game-btn {% if request.endpoint == 'home.combos_fatal_fury' %}active-game{% endif %}">FATAL FURY</a>
+      <a href="{{ url_for('home.combos_kofxv') }}"
+        class="game-btn {% if request.endpoint == 'home.combos_kofxv' %}active-game{% endif %}">KOF XV</a>
+      <a href="{{ url_for('home.combos_ggst') }}"
+        class="game-btn {% if request.endpoint == 'home.combos_ggst' %}active-game{% endif %}">GGST</a>
+      <a href="{{ url_for('home.combos_dbfz') }}"
+        class="game-btn {% if request.endpoint == 'home.combos_dbfz' %}active-game{% endif %}">DBFZ</a>
+      <a href="{{ url_for('home.combos_animefg') }}"
+        class="game-btn {% if request.endpoint == 'home.combos_animefg' %}active-game{% endif %}">ANIME FG</a>
     </nav>
   </header>
   <main>
-{% block editor_preview %}
-<div class="editor-wrap">
+    {% block editor_preview %}
+    <div class="editor-wrap">
       <div class="editor-header" style="justify-content: space-between; width: 100%;">
         <div style="display: flex; align-items: center; gap: 0.75rem;">
           <div class="editor-dot"></div>
           <span class="editor-label">Preview de tu combo</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <label for="bg-color-picker"
+              style="font-family:var(--mono); font-size:0.7rem; color:var(--text-muted); text-transform: uppercase;">Fondo:</label>
+            <input type="color" id="bg-color-picker" value="#161B2E"
+              style="background:transparent; border:none; cursor:pointer; height:24px; width:24px; padding:0;" title="Color de fondo de la preview">
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <label for="text-color-picker"
+              style="font-family:var(--mono); font-size:0.7rem; color:var(--text-muted); text-transform: uppercase;">Texto:</label>
+            <input type="color" id="text-color-picker" value="#E2E8F8"
+              style="background:transparent; border:none; cursor:pointer; height:24px; width:24px; padding:0;" title="Color de los botones de texto">
+          </div>
         </div>
       </div>
 
@@ -731,18 +758,21 @@
           style="color:var(--text-muted); opacity:0.5; font-family:var(--mono);">Aquí aparecerá tu combo...</span>
       </div>
     </div>
-{% endblock %}
+    {% endblock %}
 
-    
+
 
     <section id="game-keyboards" style="display: block;">
       {% block content %}{% endblock %}
     </section>
   </main>
-<footer>
+  <footer>
     <p>COMBO MAKER - Hecho con Flask - Alvaro Bustos</p>
-    <p style="margin-top: 0.5rem; font-size: 0.55rem; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.5; opacity: 0.7;">
-      Este sitio/trabajo utiliza materiales protegidos por derechos de autor bajo la doctrina de uso legítimo (Fair Use). Dichos materiales se reproducen aquí exclusivamente con fines educativos, de investigación y sin fines de lucro. Todos los derechos sobre el contenido original pertenecen a sus respectivos autores.
+    <p
+      style="margin-top: 0.5rem; font-size: 0.55rem; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.5; opacity: 0.7;">
+      Este sitio/trabajo utiliza materiales protegidos por derechos de autor bajo la doctrina de uso legítimo (Fair
+      Use). Dichos materiales se reproducen aquí exclusivamente con fines educativos, de investigación y sin fines de
+      lucro. Todos los derechos sobre el contenido original pertenecen a sus respectivos autores.
     </p>
   </footer>
 
@@ -767,18 +797,46 @@
           img.src = t.img;
           img.alt = t.val;
           img.title = t.val;
-          img.style.maxWidth = '40px';
-          img.style.maxHeight = '40px';
+          img.style.maxWidth = '30px';
+          img.style.maxHeight = '30px';
           img.style.objectFit = 'contain';
           inputContainer.appendChild(img);
         } else {
           const span = document.createElement('span');
           span.className = 'kbd-token';
           span.textContent = t.val;
+
+          const colorPicker = document.getElementById('text-color-picker');
+          if (colorPicker) {
+            span.style.color = colorPicker.value;
+          }
+          span.style.background = 'transparent';
+          span.style.fontSize = '1.2rem';
+          span.style.fontWeight = 'bold';
+          span.style.padding = '0 0.2rem';
+
           inputContainer.appendChild(span);
         }
       });
     }
+
+    // Listener para el color picker
+    document.addEventListener('DOMContentLoaded', () => {
+      const textColorPicker = document.getElementById('text-color-picker');
+      if (textColorPicker) {
+        textColorPicker.addEventListener('input', updateMainPreview);
+      }
+      
+      const bgColorPicker = document.getElementById('bg-color-picker');
+      const comboInput = document.getElementById('combo-input');
+      if (bgColorPicker && comboInput) {
+        bgColorPicker.addEventListener('input', (e) => {
+          comboInput.style.backgroundColor = e.target.value;
+        });
+        // Aplicar color inicial inmediatamente
+        comboInput.style.backgroundColor = bgColorPicker.value;
+      }
+    });
 
     // ── Game keyboard sections ──
     let kbdTokens = [];
@@ -817,15 +875,18 @@
       const originalBorder = container.style.border;
       const originalWidth = container.style.width;
       const originalPadding = container.style.padding;
+      const originalBg = container.style.backgroundColor;
 
       // Quitar bordes y forzar que el contenedor ajuste solo al contenido
       container.style.border = 'none';
       container.style.width = 'max-content';
       container.style.padding = '0.5rem';
+      // Forzar fondo transparente para la exportación
+      container.style.backgroundColor = 'transparent';
 
       // html2canvas toma captura del div limpio
       html2canvas(container, {
-        backgroundColor: "#00000000", // color de fondo
+        backgroundColor: null, // null permite que el canvas exporte con fondo transparente
         scale: 2, // mayor calidad en la imagen exportada
         useCORS: true // soluciona si de casualidad hay problemas de origen
       }).then(canvas => {
@@ -833,6 +894,7 @@
         container.style.border = originalBorder;
         container.style.width = originalWidth;
         container.style.padding = originalPadding;
+        container.style.backgroundColor = originalBg;
 
         const link = document.createElement('a');
         link.download = 'combo.png';
@@ -843,6 +905,7 @@
         container.style.border = originalBorder;
         container.style.width = originalWidth;
         container.style.padding = originalPadding;
+        container.style.backgroundColor = originalBg;
 
         console.error('Error exportando combo:', err);
         alert('Hubo un error exportando la imagen.');
@@ -883,7 +946,8 @@
           ...createButtonsFromDict({{ list_movement_sf6 | default({ }) | tojson | safe
     }}, 'dir-key'),
     { cls: 'dir-key ', val: ',', title: ',', text: ',' },
-    { cls: 'dir-key ', val: 'j.', title: 'j.', text: 'j.' }
+    { cls: 'dir-key ', val: 'j.', title: 'j.', text: 'j.' },
+    { cls: 'dir-key', val: '+', title: '+', text: '+' }
         ],
     buttons: [
       ...createButtonsFromDict({{ list_buttons_sf6 | default({}) | tojson | safe }}, 'punch-key'),
@@ -894,18 +958,21 @@
       directions: [
         ...createButtonsFromDict({{ list_movement_tekken | default({}) | tojson | safe }}, 'dir-key'),
     { cls: 'dir-key', val: ',', title: ',', text: ',' },
-    { cls: 'dir-key', val: 'j.', title: 'j.', text: 'j.' }
+    { cls: 'dir-key', val: 'j.', title: 'j.', text: 'j.' },
+    { cls: 'dir-key', val: '+', title: '+', text: '+' }
       ],
     buttons: [
       ...createButtonsFromDict({{ list_buttons_tekken | default({}) | tojson | safe }}, 'punch-key'),
       ...createButtonsFromDict({{ list_special_tekken | default({}) | tojson | safe }}, 'spec-key')
+
     ]
       },
     twoexko: {
       directions: [
         ...createButtonsFromDict({{ list_movement_2xko | default({}) | tojson | safe }}, 'dir-key'),
     { cls: 'dir-key', val: ',', title: ',', text: ',' },
-    { cls: 'dir-key', val: 'j.', title: 'j.', text: 'j.' }
+    { cls: 'dir-key', val: 'j.', title: 'j.', text: 'j.' },
+    { cls: 'dir-key', val: '+', title: '+', text: '+' }
       ],
     buttons: [
       ...createButtonsFromDict({{ list_buttons_2xko | default({}) | tojson | safe }}, 'punch-key'),
@@ -924,7 +991,8 @@
         { cls: 'center-key', val: '3', title: 'DownRight', text: '3' },
         { cls: 'center-key', val: 'N', title: 'Neutral', text: '5' },
         { cls: 'center-key', val: ',', title: ',', text: ',' },
-        { cls: 'center-key', val: 'j.', title: 'j.', text: 'j.' }
+        { cls: 'center-key', val: 'j.', title: 'j.', text: 'j.' },
+        { cls: 'dir-key', val: '+', title: '+', text: '+' }
       ],
         buttons: [
           { cls: 'punch-key', val: 'LP', title: '1', text: 'LP' },
@@ -942,35 +1010,62 @@
     fatal_fury: {
       directions: [
         ...createButtonsFromDict({{ list_movement_fatal_fury | default({}) | tojson | safe }}, 'dir-key'),
-        { cls: 'dir-key', val: ',', title: ',', text: ',' },
-        { cls: 'dir-key', val: 'j.', title: 'j.', text: 'j.' }
+    { cls: 'dir-key', val: ',', title: ',', text: ',' },
+    { cls: 'dir-key', val: 'j.', title: 'j.', text: 'j.' },
+    { cls: 'dir-key', val: '+', title: '+', text: '+' }
       ],
-      buttons: [
-        ...createButtonsFromDict({{ list_buttons_fatal_fury | default({}) | tojson | safe }}, 'punch-key'),
-        ...createButtonsFromDict({{ list_special_fatal_fury | default({}) | tojson | safe }}, 'spec-key')
-      ]
+    buttons: [
+      ...createButtonsFromDict({{ list_buttons_fatal_fury | default({}) | tojson | safe }}, 'punch-key'),
+      ...createButtonsFromDict({{ list_special_fatal_fury | default({}) | tojson | safe }}, 'spec-key')
+    ]
     },
     kofxv: {
       directions: [
         ...createButtonsFromDict({{ list_movement_kofxv | default({}) | tojson | safe }}, 'dir-key'),
-        { cls: 'dir-key', val: ',', title: ',', text: ',' },
-        { cls: 'dir-key', val: 'j.', title: 'j.', text: 'j.' }
+    { cls: 'dir-key', val: ',', title: ',', text: ',' },
+    { cls: 'dir-key', val: 'j.', title: 'j.', text: 'j.' },
+    { cls: 'dir-key', val: '+', title: '+', text: '+' }
       ],
-      buttons: [
-        ...createButtonsFromDict({{ list_buttons_kofxv | default({}) | tojson | safe }}, 'punch-key'),
-        ...createButtonsFromDict({{ list_special_kofxv | default({}) | tojson | safe }}, 'spec-key')
-      ]
+    buttons: [
+      ...createButtonsFromDict({{ list_buttons_kofxv | default({}) | tojson | safe }}, 'punch-key'),
+      ...createButtonsFromDict({{ list_special_kofxv | default({}) | tojson | safe }}, 'spec-key')
+    ]
     },
     ggst: {
       directions: [
         ...createButtonsFromDict({{ list_movement_ggst | default({}) | tojson | safe }}, 'dir-key'),
-        { cls: 'dir-key', val: ',', title: ',', text: ',' },
-        { cls: 'dir-key', val: 'j.', title: 'j.', text: 'j.' }
+    { cls: 'dir-key', val: ',', title: ',', text: ',' },
+    { cls: 'dir-key', val: 'j.', title: 'j.', text: 'j.' },
+    { cls: 'dir-key', val: '+', title: '+', text: '+' }
       ],
-      buttons: [
-        ...createButtonsFromDict({{ list_buttons_ggst | default({}) | tojson | safe }}, 'punch-key'),
-        ...createButtonsFromDict({{ list_special_ggst | default({}) | tojson | safe }}, 'spec-key')
-      ]
+    buttons: [
+      ...createButtonsFromDict({{ list_buttons_ggst | default({}) | tojson | safe }}, 'punch-key'),
+      ...createButtonsFromDict({{ list_special_ggst | default({}) | tojson | safe }}, 'spec-key')
+    ]
+    },
+    dbfz: {
+      directions: [
+        ...createButtonsFromDict({{ list_movement_dbfz | default({}) | tojson | safe }}, 'dir-key'),
+    { cls: 'dir-key', val: ',', title: ',', text: ',' },
+    { cls: 'dir-key', val: 'j.', title: 'j.', text: 'j.' },
+    { cls: 'dir-key', val: '+', title: '+', text: '+' }
+      ],
+    buttons: [
+      ...createButtonsFromDict({{ list_buttons_dbfz | default({}) | tojson | safe }}, 'punch-key'),
+      ...createButtonsFromDict({{ list_special_dbfz | default({}) | tojson | safe }}, 'spec-key')
+    ]
+    },
+    animefg: {
+      directions: [
+        ...createButtonsFromDict({{ list_movement_animefg | default({}) | tojson | safe }}, 'dir-key'),
+    { cls: 'dir-key', val: ',', title: ',', text: ',' },
+    { cls: 'dir-key', val: 'j.', title: 'j.', text: 'j.' },
+    { cls: 'dir-key', val: '+', title: '+', text: '+' }
+      ],
+    buttons: [
+      ...createButtonsFromDict({{ list_buttons_animefg | default({}) | tojson | safe }}, 'punch-key'),
+      ...createButtonsFromDict({{ list_special_animefg | default({}) | tojson | safe }}, 'spec-key')
+    ]
     }
     };
 
@@ -1022,7 +1117,7 @@
     }
 
     // Initialize keyboards (render all but keep hidden)
-    
+
   </script>
   {% block scripts %}{% endblock %}
 </body>
