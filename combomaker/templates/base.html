@@ -710,17 +710,28 @@
       <div class="logo">COMBO<span>MAKER</span></div>
     </a>
     <nav class="game-nav">
-      <select class="game-select" onchange="window.location.href=this.value" style="background: var(--surface2); color: var(--text); border: 1px solid var(--border); padding: 0.5rem 1rem; border-radius: 6px; font-family: var(--sans); font-size: 1.05rem; font-weight: 500; cursor: pointer; outline: none;">
-        <option value="" disabled {% if request.endpoint == 'home.index' %}selected{% endif %}>Selecciona un juego</option>
-        <option value="{{ url_for('home.combos_2xko') }}" {% if request.endpoint == 'home.combos_2xko' %}selected{% endif %}>2XKO</option>
-        <option value="{{ url_for('home.combos_generico') }}" {% if request.endpoint == 'home.combos_generico' %}selected{% endif %}>Generic</option>
-        <option value="{{ url_for('home.combos_tekken') }}" {% if request.endpoint == 'home.combos_tekken' %}selected{% endif %}>TEKKEN 8</option>
-        <option value="{{ url_for('home.combos_sf6') }}" {% if request.endpoint == 'home.combos_sf6' %}selected{% endif %}>SF6</option>
-        <option value="{{ url_for('home.combos_fatal_fury') }}" {% if request.endpoint == 'home.combos_fatal_fury' %}selected{% endif %}>FATAL FURY</option>
-        <option value="{{ url_for('home.combos_kofxv') }}" {% if request.endpoint == 'home.combos_kofxv' %}selected{% endif %}>KOF XV</option>
-        <option value="{{ url_for('home.combos_ggst') }}" {% if request.endpoint == 'home.combos_ggst' %}selected{% endif %}>GGST</option>
-        <option value="{{ url_for('home.combos_dbfz') }}" {% if request.endpoint == 'home.combos_dbfz' %}selected{% endif %}>DBFZ</option>
-        <option value="{{ url_for('home.combos_animefg') }}" {% if request.endpoint == 'home.combos_animefg' %}selected{% endif %}>ANIME FG</option>
+      <select class="game-select" onchange="window.location.href=this.value"
+        style="background: var(--surface2); color: var(--text); border: 1px solid var(--border); padding: 0.5rem 1rem; border-radius: 6px; font-family: var(--sans); font-size: 1.05rem; font-weight: 500; cursor: pointer; outline: none;">
+        <option value="" disabled {% if request.endpoint=='home.index' %}selected{% endif %}>Selecciona un juego
+        </option>
+        <option value="{{ url_for('home.combos_2xko') }}" {% if request.endpoint=='home.combos_2xko' %}selected{% endif
+          %}>2XKO</option>
+        <option value="{{ url_for('home.combos_generico') }}" {% if request.endpoint=='home.combos_generico'
+          %}selected{% endif %}>Generic</option>
+        <option value="{{ url_for('home.combos_tekken') }}" {% if request.endpoint=='home.combos_tekken' %}selected{%
+          endif %}>TEKKEN 8</option>
+        <option value="{{ url_for('home.combos_sf6') }}" {% if request.endpoint=='home.combos_sf6' %}selected{% endif
+          %}>SF6</option>
+        <option value="{{ url_for('home.combos_fatal_fury') }}" {% if request.endpoint=='home.combos_fatal_fury'
+          %}selected{% endif %}>FATAL FURY</option>
+        <option value="{{ url_for('home.combos_kofxv') }}" {% if request.endpoint=='home.combos_kofxv' %}selected{%
+          endif %}>KOF XV</option>
+        <option value="{{ url_for('home.combos_ggst') }}" {% if request.endpoint=='home.combos_ggst' %}selected{% endif
+          %}>GGST</option>
+        <option value="{{ url_for('home.combos_dbfz') }}" {% if request.endpoint=='home.combos_dbfz' %}selected{% endif
+          %}>DBFZ</option>
+        <option value="{{ url_for('home.combos_animefg') }}" {% if request.endpoint=='home.combos_animefg' %}selected{%
+          endif %}>ANIME FG</option>
       </select>
     </nav>
   </header>
@@ -737,13 +748,15 @@
             <label for="bg-color-picker"
               style="font-family:var(--mono); font-size:0.7rem; color:var(--text-muted); text-transform: uppercase;">Fondo:</label>
             <input type="color" id="bg-color-picker" value="#161B2E"
-              style="background:transparent; border:none; cursor:pointer; height:24px; width:24px; padding:0;" title="Color de fondo de la preview">
+              style="background:transparent; border:none; cursor:pointer; height:24px; width:24px; padding:0;"
+              title="Color de fondo de la preview">
           </div>
           <div style="display: flex; align-items: center; gap: 0.5rem;">
             <label for="text-color-picker"
               style="font-family:var(--mono); font-size:0.7rem; color:var(--text-muted); text-transform: uppercase;">Texto:</label>
             <input type="color" id="text-color-picker" value="#E2E8F8"
-              style="background:transparent; border:none; cursor:pointer; height:24px; width:24px; padding:0;" title="Color de los botones de texto">
+              style="background:transparent; border:none; cursor:pointer; height:24px; width:24px; padding:0;"
+              title="Color de los botones de texto">
           </div>
         </div>
       </div>
@@ -820,7 +833,7 @@
       if (textColorPicker) {
         textColorPicker.addEventListener('input', updateMainPreview);
       }
-      
+
       const bgColorPicker = document.getElementById('bg-color-picker');
       const comboInput = document.getElementById('combo-input');
       if (bgColorPicker && comboInput) {
@@ -941,7 +954,8 @@
     }}, 'dir-key'),
     { cls: 'dir-key ', val: ',', title: ',', text: ',' },
     { cls: 'dir-key ', val: 'j.', title: 'j.', text: 'j.' },
-    { cls: 'dir-key', val: '+', title: '+', text: '+' }
+    { cls: 'dir-key', val: '+', title: '+', text: '+' },
+    { cls: 'dir-key', val: '~', title: '~', text: '~' },
         ],
     buttons: [
       ...createButtonsFromDict({{ list_buttons_sf6 | default({}) | tojson | safe }}, 'punch-key'),
@@ -953,7 +967,8 @@
         ...createButtonsFromDict({{ list_movement_tekken | default({}) | tojson | safe }}, 'dir-key'),
     { cls: 'dir-key', val: ',', title: ',', text: ',' },
     { cls: 'dir-key', val: 'j.', title: 'j.', text: 'j.' },
-    { cls: 'dir-key', val: '+', title: '+', text: '+' }
+    { cls: 'dir-key', val: '+', title: '+', text: '+' },
+    { cls: 'dir-key', val: '~', title: '~', text: '~' },
       ],
     buttons: [
       ...createButtonsFromDict({{ list_buttons_tekken | default({}) | tojson | safe }}, 'punch-key'),
@@ -966,7 +981,8 @@
         ...createButtonsFromDict({{ list_movement_2xko | default({}) | tojson | safe }}, 'dir-key'),
     { cls: 'dir-key', val: ',', title: ',', text: ',' },
     { cls: 'dir-key', val: 'j.', title: 'j.', text: 'j.' },
-    { cls: 'dir-key', val: '+', title: '+', text: '+' }
+    { cls: 'dir-key', val: '+', title: '+', text: '+' },
+    { cls: 'dir-key', val: '~', title: '~', text: '~' },
       ],
     buttons: [
       ...createButtonsFromDict({{ list_buttons_2xko | default({}) | tojson | safe }}, 'punch-key'),
@@ -986,7 +1002,8 @@
         { cls: 'center-key', val: 'N', title: 'Neutral', text: '5' },
         { cls: 'center-key', val: ',', title: ',', text: ',' },
         { cls: 'center-key', val: 'j.', title: 'j.', text: 'j.' },
-        { cls: 'dir-key', val: '+', title: '+', text: '+' }
+        { cls: 'dir-key', val: '+', title: '+', text: '+' },
+        { cls: 'dir-key', val: '~', title: '~', text: '~' },
       ],
         buttons: [
           { cls: 'punch-key', val: 'LP', title: '1', text: 'LP' },
@@ -1006,7 +1023,8 @@
         ...createButtonsFromDict({{ list_movement_fatal_fury | default({}) | tojson | safe }}, 'dir-key'),
     { cls: 'dir-key', val: ',', title: ',', text: ',' },
     { cls: 'dir-key', val: 'j.', title: 'j.', text: 'j.' },
-    { cls: 'dir-key', val: '+', title: '+', text: '+' }
+    { cls: 'dir-key', val: '+', title: '+', text: '+' },
+    { cls: 'dir-key', val: '~', title: '~', text: '~' },
       ],
     buttons: [
       ...createButtonsFromDict({{ list_buttons_fatal_fury | default({}) | tojson | safe }}, 'punch-key'),
@@ -1018,7 +1036,8 @@
         ...createButtonsFromDict({{ list_movement_kofxv | default({}) | tojson | safe }}, 'dir-key'),
     { cls: 'dir-key', val: ',', title: ',', text: ',' },
     { cls: 'dir-key', val: 'j.', title: 'j.', text: 'j.' },
-    { cls: 'dir-key', val: '+', title: '+', text: '+' }
+    { cls: 'dir-key', val: '+', title: '+', text: '+' },
+    { cls: 'dir-key', val: '~', title: '~', text: '~' },
       ],
     buttons: [
       ...createButtonsFromDict({{ list_buttons_kofxv | default({}) | tojson | safe }}, 'punch-key'),
@@ -1030,7 +1049,8 @@
         ...createButtonsFromDict({{ list_movement_ggst | default({}) | tojson | safe }}, 'dir-key'),
     { cls: 'dir-key', val: ',', title: ',', text: ',' },
     { cls: 'dir-key', val: 'j.', title: 'j.', text: 'j.' },
-    { cls: 'dir-key', val: '+', title: '+', text: '+' }
+    { cls: 'dir-key', val: '+', title: '+', text: '+' },
+    { cls: 'dir-key', val: '~', title: '~', text: '~' },
       ],
     buttons: [
       ...createButtonsFromDict({{ list_buttons_ggst | default({}) | tojson | safe }}, 'punch-key'),
@@ -1042,7 +1062,8 @@
         ...createButtonsFromDict({{ list_movement_dbfz | default({}) | tojson | safe }}, 'dir-key'),
     { cls: 'dir-key', val: ',', title: ',', text: ',' },
     { cls: 'dir-key', val: 'j.', title: 'j.', text: 'j.' },
-    { cls: 'dir-key', val: '+', title: '+', text: '+' }
+    { cls: 'dir-key', val: '+', title: '+', text: '+' },
+    { cls: 'dir-key', val: '~', title: '~', text: '~' },
       ],
     buttons: [
       ...createButtonsFromDict({{ list_buttons_dbfz | default({}) | tojson | safe }}, 'punch-key'),
@@ -1054,7 +1075,8 @@
         ...createButtonsFromDict({{ list_movement_animefg | default({}) | tojson | safe }}, 'dir-key'),
     { cls: 'dir-key', val: ',', title: ',', text: ',' },
     { cls: 'dir-key', val: 'j.', title: 'j.', text: 'j.' },
-    { cls: 'dir-key', val: '+', title: '+', text: '+' }
+    { cls: 'dir-key', val: '+', title: '+', text: '+' },
+    { cls: 'dir-key', val: '~', title: '~', text: '~' },
       ],
     buttons: [
       ...createButtonsFromDict({{ list_buttons_animefg | default({}) | tojson | safe }}, 'punch-key'),
