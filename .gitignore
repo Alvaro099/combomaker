@@ -167,3 +167,20 @@ cython_debug/
 
 # Gemini System folders
 .gemini/
+
+# OS / editor temporary files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Log files
+*.log
+
+# Local env files (do not commit secrets)
+.env.local
+.env.*.local
+
+# Build artifacts
+pip-wheel-metadata/
+*.egg-info/
+
