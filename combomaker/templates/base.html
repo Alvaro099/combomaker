@@ -4,12 +4,52 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Combo Maker | Generador de Notación Visual para Fighting Games</title>
-  <meta name="description" content="Genera, visualiza y exporta combos de Street Fighter 6, Tekken 8, 2XKO y más con iconografía gráfica oficial para Discord, X y streams." />
-  <meta property="og:title" content="Combo Maker — FGC Notation Suite" />
-  <meta property="og:description" content="Crea tarjetas de combos visuales con botones oficiales listos para compartir." />
+  <title>{% block page_title %}Combo Maker | Generador de Notación Visual para Fighting Games{% endblock %}</title>
+  <meta name="description" content="{% block page_description %}Genera, visualiza y exporta combos de Street Fighter 6, Tekken 8, 2XKO y más con iconografía gráfica oficial para Discord, X y streams.{% endblock %}" />
+  <meta name="keywords" content="{% block page_keywords %}combo maker, fighting games, FGC, notación visual, Street Fighter 6, Tekken 8, Guilty Gear Strive, 2XKO, Dragon Ball FighterZ, KOF XV, Fatal Fury, generador de combos{% endblock %}" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="{% block canonical_url %}https://combomaker-ecru.vercel.app/{% endblock %}" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="{% block og_title %}Combo Maker — FGC Notation Suite{% endblock %}" />
+  <meta property="og:description" content="{% block og_description %}Crea tarjetas de combos visuales con botones oficiales listos para compartir en Discord, X y streams.{% endblock %}" />
   <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary" />
+  <meta property="og:url" content="{% block og_url %}https://combomaker-ecru.vercel.app/{% endblock %}" />
+  <meta property="og:site_name" content="Combo Maker" />
+  <meta property="og:locale" content="es_ES" />
+  <meta property="og:image" content="https://combomaker-ecru.vercel.app/static/og-preview.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{% block twitter_title %}Combo Maker — FGC Notation Suite{% endblock %}" />
+  <meta name="twitter:description" content="{% block twitter_description %}Generador de notación visual para Fighting Games. Street Fighter 6, Tekken 8, Guilty Gear y más.{% endblock %}" />
+  <meta name="twitter:image" content="https://combomaker-ecru.vercel.app/static/og-preview.png" />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Combo Maker",
+    "description": "Generador de notación visual para Fighting Games. Crea y exporta tarjetas de combos con iconografía oficial de Street Fighter 6, Tekken 8, Guilty Gear Strive, 2XKO, Dragon Ball FighterZ, KOF XV, Fatal Fury y más.",
+    "url": "https://combomaker-ecru.vercel.app/",
+    "applicationCategory": "GameApplication",
+    "operatingSystem": "Web",
+    "inLanguage": "es",
+    "keywords": "combo maker, fighting games, FGC, notación visual, Street Fighter 6, Tekken 8",
+    "author": {
+      "@type": "Person",
+      "name": "Alvaro Bustos"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='7' r='5' fill='%232563EB'/%3E%3Crect x='10.5' y='11' width='3' height='7' rx='1' fill='%2394A3B8'/%3E%3Crect x='3' y='17' width='18' height='4' rx='2' fill='%231E293B' stroke='%23283347'/%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
