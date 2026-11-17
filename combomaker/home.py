@@ -48,22 +48,22 @@ def combos_2xko():
 def combos_tekken():
 
     list_buttons_tekken = { 
-        "0" : "combomaker/static/Tekken Notation PNGs/buttons/0.png",
         "1" : "combomaker/static/Tekken Notation PNGs/buttons/1.png",
-        "1+2" : "combomaker/static/Tekken Notation PNGs/buttons/1plus2.png",
-        "1+2+3" : "combomaker/static/Tekken Notation PNGs/buttons/1plus2plus3.png",
-        "1+2+3+4" : "combomaker/static/Tekken Notation PNGs/buttons/1plus2plus3plus4.png",
-        "1+2+4" : "combomaker/static/Tekken Notation PNGs/buttons/1plus2plus4.png",
-        "1+3" : "combomaker/static/Tekken Notation PNGs/buttons/1plus3.png",
-        "1+3+4" : "combomaker/static/Tekken Notation PNGs/buttons/1plus3plus4.png",
-        "1+4" : "combomaker/static/Tekken Notation PNGs/buttons/1plus4.png",
         "2" : "combomaker/static/Tekken Notation PNGs/buttons/2.png",
-        "2+3" : "combomaker/static/Tekken Notation PNGs/buttons/2plus3.png",
-        "2+3+4" : "combomaker/static/Tekken Notation PNGs/buttons/2plus3plus4.png",
-        "2+4" : "combomaker/static/Tekken Notation PNGs/buttons/2plus4.png",
         "3" : "combomaker/static/Tekken Notation PNGs/buttons/3.png",
-        "3+4" : "combomaker/static/Tekken Notation PNGs/buttons/3plus4.png",
         "4" : "combomaker/static/Tekken Notation PNGs/buttons/4.png",
+        "1+2" : "combomaker/static/Tekken Notation PNGs/buttons/1plus2.png",
+        "3+4" : "combomaker/static/Tekken Notation PNGs/buttons/3plus4.png",
+        "1+3" : "combomaker/static/Tekken Notation PNGs/buttons/1plus3.png",
+        "2+4" : "combomaker/static/Tekken Notation PNGs/buttons/2plus4.png",
+        "1+4" : "combomaker/static/Tekken Notation PNGs/buttons/1plus4.png",
+        "2+3" : "combomaker/static/Tekken Notation PNGs/buttons/2plus3.png",
+        "1+2+3" : "combomaker/static/Tekken Notation PNGs/buttons/1plus2plus3.png",
+        "1+2+4" : "combomaker/static/Tekken Notation PNGs/buttons/1plus2plus4.png",
+        "1+3+4" : "combomaker/static/Tekken Notation PNGs/buttons/1plus3plus4.png",
+        "2+3+4" : "combomaker/static/Tekken Notation PNGs/buttons/2plus3plus4.png",
+        "1+2+3+4" : "combomaker/static/Tekken Notation PNGs/buttons/1plus2plus3plus4.png",
+        "0" : "combomaker/static/Tekken Notation PNGs/buttons/0.png",
     }
 
     list_movement_tekken = {
@@ -121,14 +121,14 @@ def combos_sf6():
     }
 
     list_buttons_sf6 = {
-        "kick_h" : "combomaker/static/Street Fighter 6 Notation PNGs/buttons/icon_kick_h.png",
-        "kick_l" : "combomaker/static/Street Fighter 6 Notation PNGs/buttons/icon_kick_l.png",
-        "kick_m" : "combomaker/static/Street Fighter 6 Notation PNGs/buttons/icon_kick_m.png",
-        "kick": "combomaker/static/Street Fighter 6 Notation PNGs/buttons/icon_kick.png",
-        "punch_h" : "combomaker/static/Street Fighter 6 Notation PNGs/buttons/icon_punch_h.png",
         "punch_l" : "combomaker/static/Street Fighter 6 Notation PNGs/buttons/icon_punch_l.png",
         "punch_m" : "combomaker/static/Street Fighter 6 Notation PNGs/buttons/icon_punch_m.png",
+        "punch_h" : "combomaker/static/Street Fighter 6 Notation PNGs/buttons/icon_punch_h.png",
         "punch" : "combomaker/static/Street Fighter 6 Notation PNGs/buttons/icon_punch.png",
+        "kick_l" : "combomaker/static/Street Fighter 6 Notation PNGs/buttons/icon_kick_l.png",
+        "kick_m" : "combomaker/static/Street Fighter 6 Notation PNGs/buttons/icon_kick_m.png",
+        "kick_h" : "combomaker/static/Street Fighter 6 Notation PNGs/buttons/icon_kick_h.png",
+        "kick": "combomaker/static/Street Fighter 6 Notation PNGs/buttons/icon_kick.png",
     }
 
     list_special_sf6 = {

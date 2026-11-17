@@ -168,6 +168,14 @@ cython_debug/
 # Gemini System folders
 .gemini/
 
+# AI Coding Agents & Harnesses
+.agent/
+.claude/
+.dsh/
+.impeccable/
+.cursor/
+.windsurf/
+
 # OS / editor temporary files
 .DS_Store
 Thumbs.db
@@ -184,3 +192,5 @@ desktop.ini
 pip-wheel-metadata/
 *.egg-info/
 
+DESIGN.md
+PRODUCT.md

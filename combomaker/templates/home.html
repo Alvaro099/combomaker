@@ -3,63 +3,394 @@
 {% block editor_preview %}{% endblock %}
 
 {% block content %}
-<div class="kbd-game-section" style="border: none; box-shadow: none;">
-  <div class="kbd-header" style="justify-content: center; text-align: center; padding: 3rem 0;">
-    <div>
-      <h2 class="kbd-title" style="font-size: 2.5rem; margin-bottom: 1.5rem; color: var(--accent);">¡BIENVENIDO A
-        COMBOMAKER!</h2>
-      <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto; line-height: 1.6;">
-        Selecciona un juego en el menú superior para comenzar a crear y exportar tus combos con notación visual.
-      </p>
+<div class="hub-container">
+  <!-- Hero Section -->
+  <section class="hub-hero">
+    <h1 class="hub-title">ELIGE TU JUEGO Y ARMA TU COMBO</h1>
+    <p class="hub-subtitle">
+      Genera secuencias con la iconografía visual oficial de cada franquicia, edita libremente cada input y copia o exporta tarjetas de combo en alta resolución para Discord, X y directos.
+    </p>
+  </section>
+
+  <!-- Games Grid -->
+  <section class="games-grid-section">
+    <div class="section-title-row">
+      <h2 class="section-heading">JUEGOS DISPONIBLES</h2>
+      <span class="section-count">9 Franquicias</span>
     </div>
-  </div>
-  <style>
-    .project-card {
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 2rem;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-      transition: all 0.2s ease;
-      height: 100%;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .project-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 0 30px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--accent-dim);
-      border-color: var(--accent);
-    }
-    .project-link {
-      text-decoration: none;
-      color: inherit;
-      display: block;
-    }
-  </style>
 
-  <div class="kbd-header" style="justify-content: center; text-align: center; margin-top: 2rem; margin-bottom: 2rem;">
-    <h3 class="kbd-title" style="font-size: 1.5rem; color: var(--text-muted); letter-spacing: 0.1em;">MIS OTROS PROYECTOS</h3>
-  </div>
+    <div class="games-grid">
+      <!-- Street Fighter 6 -->
+      <a href="{{ url_for('home.combos_sf6') }}" class="game-hub-card">
+        <div class="card-top">
+          <span class="game-badge badge-sf6">SF6</span>
+          <span class="game-company">Capcom</span>
+        </div>
+        <h3 class="game-card-name">Street Fighter 6</h3>
+        
+        <div class="card-footer-cta">
+          <span>Abrir teclado</span>
+          <span class="cta-arrow">→</span>
+        </div>
+      </a>
 
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 800px; margin: 0 auto;">
-    <a href="https://versushighligts-main.vercel.app" target="_blank" rel="noopener noreferrer" class="project-link">
-      <div class="project-card">
-        <h3 class="kbd-title" style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--accent);">Versus Highlights</h3>
-        <p style="color: var(--text-muted); font-size: 1.05rem; margin: 0 auto; line-height: 1.6;">
-          App web que te permite crear miniaturas VS para redes
-        </p>
-      </div>
-    </a>
-    <a href="https://p3cv-nirval.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link">
-      <div class="project-card">
-        <h3 class="kbd-title" style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--accent);">CV Esports</h3>
-        <p style="color: var(--text-muted); font-size: 1.05rem; margin: 0 auto; line-height: 1.6;">
-          Mi currículum como relator dentro de la FGC
-        </p>
-      </div>
-    </a>
-  </div>
+      <!-- Tekken 8 -->
+      <a href="{{ url_for('home.combos_tekken') }}" class="game-hub-card">
+        <div class="card-top">
+          <span class="game-badge badge-tekken">T8</span>
+          <span class="game-company">Bandai Namco</span>
+        </div>
+        <h3 class="game-card-name">Tekken 8</h3>
+        
+        <div class="card-footer-cta">
+          <span>Abrir teclado</span>
+          <span class="cta-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- 2XKO -->
+      <a href="{{ url_for('home.combos_2xko') }}" class="game-hub-card">
+        <div class="card-top">
+          <span class="game-badge badge-2xko">2XKO</span>
+          <span class="game-company">Riot Games</span>
+        </div>
+        <h3 class="game-card-name">2XKO</h3>
+        
+        <div class="card-footer-cta">
+          <span>Abrir teclado</span>
+          <span class="cta-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- Guilty Gear Strive -->
+      <a href="{{ url_for('home.combos_ggst') }}" class="game-hub-card">
+        <div class="card-top">
+          <span class="game-badge badge-ggst">GGST</span>
+          <span class="game-company">Arc System Works</span>
+        </div>
+        <h3 class="game-card-name">Guilty Gear -Strive-</h3>
+        
+        <div class="card-footer-cta">
+          <span>Abrir teclado</span>
+          <span class="cta-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- Dragon Ball FighterZ -->
+      <a href="{{ url_for('home.combos_dbfz') }}" class="game-hub-card">
+        <div class="card-top">
+          <span class="game-badge badge-dbfz">DBFZ</span>
+          <span class="game-company">Bandai Namco / ArcSys</span>
+        </div>
+        <h3 class="game-card-name">Dragon Ball FighterZ</h3>
+        
+        <div class="card-footer-cta">
+          <span>Abrir teclado</span>
+          <span class="cta-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- The King of Fighters XV -->
+      <a href="{{ url_for('home.combos_kofxv') }}" class="game-hub-card">
+        <div class="card-top">
+          <span class="game-badge badge-kof">KOF XV</span>
+          <span class="game-company">SNK</span>
+        </div>
+        <h3 class="game-card-name">The King of Fighters XV</h3>
+        
+        <div class="card-footer-cta">
+          <span>Abrir teclado</span>
+          <span class="cta-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- Fatal Fury: City of the Wolves -->
+      <a href="{{ url_for('home.combos_fatal_fury') }}" class="game-hub-card">
+        <div class="card-top">
+          <span class="game-badge badge-fatal">FATAL FURY</span>
+          <span class="game-company">SNK</span>
+        </div>
+        <h3 class="game-card-name">Fatal Fury: CotW</h3>
+        
+        <div class="card-footer-cta">
+          <span>Abrir teclado</span>
+          <span class="cta-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- Anime Fighting Games -->
+      <a href="{{ url_for('home.combos_animefg') }}" class="game-hub-card">
+        <div class="card-top">
+          <span class="game-badge badge-anime">ANIME FG</span>
+          <span class="game-company">uwu :3</span>
+        </div>
+        <h3 class="game-card-name">Anime Fighting Games</h3>
+        
+        <div class="card-footer-cta">
+          <span>Abrir teclado</span>
+          <span class="cta-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- Generic Numpad Notation -->
+      <a href="{{ url_for('home.combos_generico') }}" class="game-hub-card card-generic">
+        <div class="card-top">
+          <span class="game-badge badge-generic">GENÉRICO</span>
+          <span class="game-company">Universal FGC</span>
+        </div>
+        <h3 class="game-card-name">Notación NumPad</h3>
+        
+        <div class="card-footer-cta">
+          <span>Abrir teclado</span>
+          <span class="cta-arrow">→</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Author Projects Section -->
+  <section class="author-projects-section">
+    <div class="section-title-row">
+      <h2 class="section-heading-sub">MÁS PROYECTOS FGC</h2>
+    </div>
+
+    <div class="projects-mini-grid">
+      <a href="https://versushighligts-main.vercel.app" target="_blank" rel="noopener noreferrer" class="mini-project-card">
+        <div>
+          <h4 class="mini-project-title">Versus Highlights ↗</h4>
+          <p class="mini-project-desc">App web para generar miniaturas VS y banners de enfrentamiento para redes sociales.</p>
+        </div>
+      </a>
+
+      <a href="https://p3cv-nirval.vercel.app/" target="_blank" rel="noopener noreferrer" class="mini-project-card">
+        <div>
+          <h4 class="mini-project-title">CV Esports — Alvaro Bustos ↗</h4>
+          <p class="mini-project-desc">Portafolio y trayectoria como relator / caster dentro de la escena competitiva de Fighting Games.</p>
+        </div>
+      </a>
+    </div>
+  </section>
 </div>
+
+<style>
+  .hub-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+    width: 100%;
+  }
+
+  .hub-hero {
+    text-align: center;
+    max-width: 820px;
+    margin: 1rem auto 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .hub-pill {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent-hover);
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+    letter-spacing: 0.08em;
+  }
+
+  .hub-title {
+    font-family: var(--display);
+    font-size: 3.4rem;
+    letter-spacing: 0.04em;
+    color: #fff;
+    line-height: 1.05;
+    margin: 0;
+  }
+
+  .hub-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .section-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-heading {
+    font-family: var(--display);
+    font-size: 1.8rem;
+    letter-spacing: 0.04em;
+    color: var(--text);
+  }
+
+  .section-heading-sub {
+    font-family: var(--display);
+    font-size: 1.4rem;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+  }
+
+  .section-count {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  /* Games Grid */
+  .games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .game-hub-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.25rem;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  }
+
+  .game-hub-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    background: var(--surface2);
+  }
+
+  .card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .game-badge {
+    font-family: var(--display);
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    color: #fff;
+    background: var(--surface3);
+  }
+
+  .badge-sf6 { background: #B45309; }
+  .badge-tekken { background: #B91C1C; }
+  .badge-2xko { background: #0369A1; }
+  .badge-ggst { background: #7E22CE; }
+  .badge-dbfz { background: #C2410C; }
+  .badge-kof { background: #047857; }
+  .badge-fatal { background: #BE123C; }
+  .badge-anime { background: #4338CA; }
+  .badge-generic { background: #374151; }
+
+  .game-company {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .game-card-name {
+    font-family: var(--display);
+    font-size: 1.65rem;
+    letter-spacing: 0.03em;
+    color: var(--text);
+    margin: 0;
+  }
+
+  .game-card-desc {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin: 0;
+    flex-grow: 1;
+  }
+
+  .card-footer-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--accent-hover);
+    padding-top: 0.85rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .cta-arrow {
+    font-size: 1.1rem;
+    transition: transform 0.15s ease;
+  }
+
+  .game-hub-card:hover .cta-arrow {
+    transform: translateX(4px);
+  }
+
+  /* Projects Mini Grid */
+  .projects-mini-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .mini-project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+  }
+
+  .mini-project-card:hover {
+    border-color: var(--border-hover);
+    background: var(--surface2);
+    transform: translateY(-2px);
+  }
+
+  .mini-project-title {
+    font-family: var(--display);
+    font-size: 1.3rem;
+    letter-spacing: 0.04em;
+    color: var(--text);
+    margin-bottom: 0.4rem;
+  }
+
+  .mini-project-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .hub-title {
+      font-size: 2.5rem;
+    }
+    .games-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
 {% endblock %}
