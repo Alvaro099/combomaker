@@ -280,6 +280,39 @@
       border-color: var(--accent);
     }
 
+    .color-picker-input:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    .color-picker-input:disabled:hover {
+      border-color: var(--border);
+    }
+
+    /* Checkbox "Transparente" */
+    .transparent-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-left: 0.25rem;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .transparent-toggle input {
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+
+    .transparent-toggle:hover {
+      color: var(--text);
+    }
+
     /* Card Metadata Bar */
     .card-meta-bar {
       display: flex;
@@ -435,6 +468,24 @@
     div#combo-input:focus {
       border-color: var(--accent);
       box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+
+    /* Fondo transparente: tablero de ajedrez solo en el preview */
+    div#combo-input.is-transparent {
+      background-color: #1B2233 !important;
+      background-image:
+        linear-gradient(45deg, #2A3347 25%, transparent 25%),
+        linear-gradient(-45deg, #2A3347 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #2A3347 75%),
+        linear-gradient(-45deg, transparent 75%, #2A3347 75%);
+      background-size: 16px 16px;
+      background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+    }
+
+    /* Durante la exportación se quita todo fondo para que el PNG salga con alfa real */
+    div#combo-input.is-transparent.exporting {
+      background: none !important;
+      background-color: transparent !important;
     }
 
     /* Interactive Chips */
@@ -901,6 +952,10 @@
             <label for="bg-color-picker" class="color-picker-label">Fondo:</label>
             <input type="color" id="bg-color-picker" class="color-picker-input" value="#182030"
               title="Color de fondo para la exportación">
+            <label class="transparent-toggle" for="bg-transparent" title="Exportar con fondo transparente">
+              <input type="checkbox" id="bg-transparent">
+              <span>Transparente</span>
+            </label>
           </div>
           <div class="color-picker-group">
             <label for="text-color-picker" class="color-picker-label">Texto:</label>
@@ -1179,7 +1234,7 @@
       }
     });
 
-    // Listener para color pickers
+    // Listener para color pickers y fondo transparente
     document.addEventListener('DOMContentLoaded', () => {
       const textColorPicker = document.getElementById('text-color-picker');
       if (textColorPicker) {
@@ -1187,12 +1242,19 @@
       }
 
       const bgColorPicker = document.getElementById('bg-color-picker');
-      if (bgColorPicker && inputContainer) {
-        bgColorPicker.addEventListener('input', (e) => {
-          inputContainer.style.backgroundColor = e.target.value;
-        });
-        inputContainer.style.backgroundColor = bgColorPicker.value;
+      const bgTransparent = document.getElementById('bg-transparent');
+
+      function applyBackground() {
+        if (!inputContainer || !bgColorPicker) return;
+        const transparent = !!(bgTransparent && bgTransparent.checked);
+        bgColorPicker.disabled = transparent;
+        inputContainer.classList.toggle('is-transparent', transparent);
+        inputContainer.style.backgroundColor = transparent ? '' : bgColorPicker.value;
       }
+
+      if (bgColorPicker) bgColorPicker.addEventListener('input', applyBackground);
+      if (bgTransparent) bgTransparent.addEventListener('change', applyBackground);
+      applyBackground();
     });
 
     // Delegación de eventos para teclas del teclado
